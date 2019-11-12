@@ -1,0 +1,2 @@
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\X86_64~1\bin\ar.exe qc libDabEngine.a  CMakeFiles/DabEngine.dir/Core/App.cpp.obj CMakeFiles/DabEngine.dir/Core/Window.cpp.obj CMakeFiles/DabEngine.dir/Main.cpp.obj
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\X86_64~1\bin\ranlib.exe libDabEngine.a
