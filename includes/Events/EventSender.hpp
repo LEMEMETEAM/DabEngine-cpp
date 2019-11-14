@@ -9,11 +9,12 @@ template <typename T>
 class EventSender
 {
     public:
-        void addListener(EventListener*);
-        void removeListener(EventListener*);
+        void addListener(T*);
+        void removeListener(T*);
         void removeAll();
+        virtual ~EventSender() = 0;
     private:
-        std::vector<EventListener*> listeners;
+        std::vector<T*> listeners;
 };
 
 #endif
