@@ -5,6 +5,7 @@
 
 class EventListener;
 
+template <typename T>
 class EventSender
 {
     public:
