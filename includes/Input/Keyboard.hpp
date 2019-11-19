@@ -1,23 +1,28 @@
 #ifndef KEYBOARD_H_
 #define KEYBOARD_H_
 
+#include "Events/Event.hpp"
+#include "Events/EventListener.hpp"
+#include "Events/EventSender.hpp"
+
 class KeyEvent
 {
     public:
-        MouseEvent(int&, int&, int&, int&):
-        int getKey();
-        int getScancode();
-        int getAction();
-        int getMod();
+        KeyEvent(int& key, int& scancode, int action, int& mod);
+        ~KeyEvent(){}
+        int getKey(){return key;}
+        int getScancode(){return scancode;}
+        int getAction(){return action;}
+        int getMod(){return mod;}
     private:
         int key, scancode, action, mod;
 };
 
 class KeyEventListener : EventListener
 {
-    virtual void onMouseButtonDown(KeyEvent&) = 0;
-    virtual void onMouseButtonUp(KeyEvent&) = 0;
-    virtual void onMouseMove(KeyEvent&) = 0;
+    public:
+    virtual void onKeyDown(KeyEvent&) = 0;
+    virtual void onKeyUp(KeyEvent&) = 0;
 };
 
 class Keyboard : EventSender<KeyEventListener>

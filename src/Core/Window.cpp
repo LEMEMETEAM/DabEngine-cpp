@@ -4,14 +4,18 @@
 #include "Core/Window.hpp"
 #include "Core/AppConfig.hpp"
 #include "Core/AppAdapter.hpp"
-#include <tuple>
-#include <iostream>
+#include "Core/Monitor.hpp"
+#include "Core/DisplayMode.hpp"
+#include "Core/Input.hpp"
 
-static void framebuffer_callback(GLFWwindow* win, int width, int height)
+Window::Window(GLFWwindow* handle, AppConfig* conf)
 {
-
+    this->windowHandle = handle;
+    this->config = conf;
+    this->input = new Input(this);
 }
-Window* Window::createWindow(AppAdapter* adapter, AppConfig* config)
+
+Window* Window::createWindow(AppConfig* config)
 {
 
     App::debugLog("==Creating window==\n");
@@ -41,23 +45,17 @@ Window* Window::createWindow(AppAdapter* adapter, AppConfig* config)
     App::debugLog("Making context\n");
     glfwMakeContextCurrent(win);
     if(glewInit()){App::debugLog("GLEW Not Initialized\n"); return NULL;}
-    glfwSwapInterval(config->vSync);
+    glfwSwapInterval(config->vSync ? 1 : 0);
     
-    return new Window(win, adapter, config);
+    return new Window(win, config);
 }
 
-void Window::init()
+void Window::init(AppAdapter* adapter)
 {
-    updateFramebufferInfo();
     glfwSetWindowUserPointer(windowHandle, this);
-    glfwSetFramebufferSizeCallback(windowHandle, [](GLFWwindow* win, int width, int height)
-    {
-        Window* ptr = static_cast<Window*>(glfwGetWindowUserPointer(win));
-        ptr->updateFramebufferInfo();
-        ptr->getAdapter()->resize(width, height);
-        ptr->getAdapter()->render();
-        glfwSwapBuffers(ptr->getHandle());
-    });
+    this->adapter = adapter;
+    updateFramebufferInfo();
+    glfwSetFramebufferSizeCallback(windowHandle, framebuffer_callback);
 }
 
 void Window::updateFramebufferInfo()
@@ -67,6 +65,67 @@ void Window::updateFramebufferInfo()
 
     config->width = logicalWidth;
     config->height = logicalHeight;
+}
+
+void Window::setTitle(const char* title)
+{
+    glfwSetWindowTitle(windowHandle, title);
+    config->title = title;
+}
+
+int Window::getWidth(bool opengl = false)
+{
+    if(opengl) return backBufferWidth;
+    else return logicalWidth;
+}
+
+int Window::getHeight(bool opengl = false)
+{
+    if(opengl) return backBufferHeight;
+    else return logicalHeight;
+}
+
+bool Window::isFullscreen()
+{
+    return glfwGetWindowMonitor(windowHandle) != NULL;
+}
+
+void Window::setWindowedMode(int width, int height)
+{
+    if(isFullscreen())
+    {
+        glfwSetWindowMonitor(windowHandle, 0, 0, 0, width, height, 0);
+    }
+    else
+    {
+        glfwSetWindowSize(windowHandle, width, height);
+    }
+    updateFramebufferInfo();
+}
+
+Monitor* getMonitor()
+{
+    //TODO
+    return NULL;
+}
+
+void setFullscreenMode(DisplayMode& mode)
+{
+    //TODO
+}
+
+void Window::onFrameBufferSizeChange(int width, int height)
+{
+    updateFramebufferInfo();
+    adapter->resize(width, height);
+    adapter->render();
+    glfwSwapBuffers(windowHandle);
+}
+
+void Window::framebuffer_callback(GLFWwindow* win, int width, int height)
+{
+    Window* obj = static_cast<Window*>(glfwGetWindowUserPointer(win));
+    obj->onFrameBufferSizeChange(width, height);
 }
 
 void Window::closeWindow(){glfwSetWindowShouldClose(windowHandle, 1);}

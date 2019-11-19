@@ -13,7 +13,7 @@ class EventSender
         void removeListener(T*);
         void removeAll();
         virtual ~EventSender() = 0;
-    private:
+    protected:
         std::vector<T*> listeners;
 };
 

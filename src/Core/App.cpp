@@ -32,10 +32,10 @@ App::App(AppAdapter* a, AppConfig* conf)
     adapter = a;
     config = conf;
 
-    window = Window::createWindow(a, config);
+    window = Window::createWindow(config);
     if(!window){debugLog(HIGH, "Window not created\n");}
 
-    window->init();
+    window->init(adapter);
 
     a->connectApp(this);
 

@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 3.10)
 
 project(DabEngine)
 
+option(BUILD_EXE "Build the Test exe" OFF)
+
 include_directories("${CMAKE_SOURCE_DIR}/../includes")
 link_directories("${CMAKE_SOURCE_DIR}/../libs")
 
@@ -13,7 +15,9 @@ target_link_libraries(DabEngine glfw3)
 target_link_libraries(DabEngine glew32)
 target_link_libraries(DabEngine opengl32)
 
-# make exe
-add_executable(EXE Main.cpp)
+if(BUILD_EXE)
+	# make exe
+	add_executable(EXE Main.cpp)
 
-target_link_libraries(EXE DabEngine)
+	target_link_libraries(EXE DabEngine)
+endif(BUILD_EXE)
