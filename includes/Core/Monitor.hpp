@@ -1,7 +1,7 @@
 #ifndef MONITOR_H_
 #define MONITOR_H_
 
-class GLFWmonitor;
+#include "GLFW/glfw3.h
 
 struct Monitor
 {
