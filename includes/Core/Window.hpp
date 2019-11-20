@@ -29,9 +29,8 @@ class Window
         void showWindow(bool b);
     
     private:
-        GLFWwindow* windowHandle;
-        AppConfig config;
-        AppAdapter* adapter;
+        GLFWwindow* m_handle;
+        AppConfig m_config;
         int backBufferWidth, backBufferHeight;
         int logicalWidth, logicalHeight;
 };
