@@ -12,15 +12,12 @@ class Window
 {
 
     public:
-        static Window* createWindow(AppConfig* conf);
-        Window(GLFWwindow* handle, AppConfig* conf);
+        Window(AppConfig& conf);
         ~Window();
-        void init(AppAdapter* adapter);
 
         void updateFramebufferInfo();
 
         GLFWwindow* getHandle(){return windowHandle;}
-        Input* getInput(){return input;}
         int getWidth(bool opengl);
         int getHeight(bool opengl);
         bool isFullscreen();
@@ -34,11 +31,8 @@ class Window
         void showWindow(bool b);
     
     private:
-        void onFrameBufferSizeChange(int width, int height);
-        static void framebuffer_callback(GLFWwindow* win, int width, int height);
         GLFWwindow* windowHandle;
-        AppConfig* config;
-        Input* input;
+        AppConfig config;
         AppAdapter* adapter;
         int backBufferWidth, backBufferHeight;
         int logicalWidth, logicalHeight;
