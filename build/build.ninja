@@ -44,12 +44,6 @@ build CMakeFiles/DabEngine.dir/Core/App.cpp.obj: CXX_COMPILER__DabEngine C$:/Use
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Core
 
-build CMakeFiles/DabEngine.dir/Core/Input.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Core/Input.cpp || cmake_object_order_depends_target_DabEngine
-  DEP_FILE = CMakeFiles\DabEngine.dir\Core\Input.cpp.obj.d
-  INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
-  OBJECT_DIR = CMakeFiles\DabEngine.dir
-  OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Core
-
 build CMakeFiles/DabEngine.dir/Core/Window.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Core/Window.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Core\Window.cpp.obj.d
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
@@ -88,7 +82,7 @@ build CMakeFiles/DabEngine.dir/Main.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B
 #############################################
 # Link the static library libDabEngine.a
 
-build libDabEngine.a: CXX_STATIC_LIBRARY_LINKER__DabEngine CMakeFiles/DabEngine.dir/Core/App.cpp.obj CMakeFiles/DabEngine.dir/Core/Input.cpp.obj CMakeFiles/DabEngine.dir/Core/Window.cpp.obj CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj CMakeFiles/DabEngine.dir/Main.cpp.obj
+build libDabEngine.a: CXX_STATIC_LIBRARY_LINKER__DabEngine CMakeFiles/DabEngine.dir/Core/App.cpp.obj CMakeFiles/DabEngine.dir/Core/Window.cpp.obj CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj CMakeFiles/DabEngine.dir/Main.cpp.obj
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

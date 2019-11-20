@@ -17,7 +17,7 @@ int main()
     conf.width = 800;
     conf.height = 600;
 
-    App app(new Test(), &conf);
+    App app(new Test(), conf);
     app.run();
 
     return 0;

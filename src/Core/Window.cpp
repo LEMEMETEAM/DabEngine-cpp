@@ -1,5 +1,6 @@
 #include "GL/glew.h"
-#include "GLFW/glfw3.h"
+#include "Core/Window.hpp"
+#include "Core/App.hpp"
 
 Window::Window(AppConfig& conf)
 :m_handle(NULL), m_config(conf)
@@ -7,7 +8,7 @@ Window::Window(AppConfig& conf)
     App::debugLog("==Creating window==\n");
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, 0);
-    glfwWindowHint(GLFW_RESIZABLE, config->resizable ? 1 : 0);
+    glfwWindowHint(GLFW_RESIZABLE, m_config.resizable ? 1 : 0);
 
     // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -17,37 +18,37 @@ Window::Window(AppConfig& conf)
     if(m_config.fullscreenMode != NULL)
     {
         App::debugLog("Creating fullscreen window\n");
-        glfwWindowHint(GLFW_REFRESH_RATE, config->fullscreenMode->refreshRate);
+        glfwWindowHint(GLFW_REFRESH_RATE, m_config.fullscreenMode->refreshRate);
         m_handle = glfwCreateWindow(m_config.fullscreenMode->width, m_config.fullscreenMode->height, m_config.title, m_config.fullscreenMode->monitor.monitor, 0);
     }
     else
     {
         App::debugLog("Creating windowed window\n");
-        glfwWindowHint(GLFW_DECORATED, config->decorated ? 1 : 0);
+        glfwWindowHint(GLFW_DECORATED, m_config.decorated ? 1 : 0);
         m_handle = glfwCreateWindow(m_config.width, m_config.height, m_config.title, 0, 0);
     }
-    if(!win) (App::debugLog("Window not created"), return);
+    if(!m_handle) App::debugLog("Window not created");
     App::debugLog("Making context\n");
     glfwMakeContextCurrent(m_handle);
-    if(glewInit()){App::debugLog("GLEW Not Initialized\n"); return NULL;}
-    glfwSwapInterval(config->vSync ? 1 : 0); 
+    if(glewInit()){App::debugLog("GLEW Not Initialized\n");}
+    glfwSwapInterval(m_config.vSync ? 1 : 0); 
 
     updateFramebufferInfo();
 }
 
 void Window::updateFramebufferInfo()
 {
-    glfwGetFramebufferSize(windowHandle, &backBufferWidth, &backBufferHeight);
-    glfwGetWindowSize(windowHandle, &logicalWidth, &logicalHeight);
+    glfwGetFramebufferSize(m_handle, &backBufferWidth, &backBufferHeight);
+    glfwGetWindowSize(m_handle, &logicalWidth, &logicalHeight);
 
-    config->width = logicalWidth;
-    config->height = logicalHeight;
+    m_config.width = logicalWidth;
+    m_config.height = logicalHeight;
 }
 
 void Window::setTitle(const char* title)
 {
-    glfwSetWindowTitle(windowHandle, title);
-    config->title = title;
+    glfwSetWindowTitle(m_handle, title);
+    m_config.title = title;
 }
 
 int Window::getWidth(bool opengl = false)
@@ -64,18 +65,18 @@ int Window::getHeight(bool opengl = false)
 
 bool Window::isFullscreen()
 {
-    return glfwGetWindowMonitor(windowHandle) != NULL;
+    return glfwGetWindowMonitor(m_handle) != NULL;
 }
 
 void Window::setWindowedMode(int width, int height)
 {
     if(isFullscreen())
     {
-        glfwSetWindowMonitor(windowHandle, 0, 0, 0, width, height, 0);
+        glfwSetWindowMonitor(m_handle, 0, 0, 0, width, height, 0);
     }
     else
     {
-        glfwSetWindowSize(windowHandle, width, height);
+        glfwSetWindowSize(m_handle, width, height);
     }
     updateFramebufferInfo();
 }
@@ -91,12 +92,12 @@ void setFullscreenMode(DisplayMode& mode)
     //TODO
 }
 
-void Window::closeWindow(){glfwSetWindowShouldClose(windowHandle, 1);}
-bool Window::shouldClose(){return glfwWindowShouldClose(windowHandle);}
-void Window::showWindow(bool b){if(b) glfwShowWindow(windowHandle); else glfwHideWindow(windowHandle);}
+void Window::closeWindow(){glfwSetWindowShouldClose(m_handle, 1);}
+bool Window::shouldClose(){return glfwWindowShouldClose(m_handle);}
+void Window::showWindow(bool b){if(b) glfwShowWindow(m_handle); else glfwHideWindow(m_handle);}
 
 Window::~Window()
 {
-    glfwDestroyWindow(windowHandle);
+    glfwDestroyWindow(m_handle);
     glfwTerminate();
 }

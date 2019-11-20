@@ -1,6 +1,7 @@
 #ifndef WINDOW_H_
 #define WINDOW_H_
 
+#include "GLFW/glfw3.h"
 #include "Core/AppConfig.hpp"
 #include "Core/AppAdapter.hpp"
 #include "Core/Monitor.hpp"
@@ -15,7 +16,7 @@ class Window
 
         void updateFramebufferInfo();
 
-        GLFWwindow* getHandle(){return windowHandle;}
+        GLFWwindow* getHandle(){return m_handle;}
         int getWidth(bool opengl);
         int getHeight(bool opengl);
         bool isFullscreen();

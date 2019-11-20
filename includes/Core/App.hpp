@@ -5,6 +5,8 @@
 #include "Core/AppAdapter.hpp"
 #include "Core/AppConfig.hpp"
 #include "Core/Window.hpp"
+#include "Input/Mouse.hpp"
+#include "Input/Keyboard.hpp"
 
 #define LOW 1
 #define HIGH 2
@@ -29,6 +31,8 @@ class App
     private:
         AppAdapter* m_adapter;
         AppConfig m_config;
+        Mouse m_mouse;
+        Keyboard m_keyboard;
         Window m_window;
 
 };

@@ -25,7 +25,7 @@ static void initGLFW()
 static void framebuffer_callback(GLFWwindow* win, int width, int height)
 {
     App* ptr = static_cast<App*>(glfwGetWindowUserPointer(win));
-    ptr->getWindow().updateFrameBufferInfo();
+    ptr->getWindow().updateFramebufferInfo();
     ptr->getAdapter()->resize(width, height);
     ptr->getAdapter()->render();
     glfwSwapBuffers(win);
@@ -34,38 +34,37 @@ static void framebuffer_callback(GLFWwindow* win, int width, int height)
 App::App(AppAdapter* a, AppConfig& conf)
 :m_adapter(a), m_config(conf), m_window((initGLFW(), Window(conf)))
 {
-    if(!m_window){debugLog(HIGH, "Window not created\n");}
 
     //create callbacks
     glfwSetWindowUserPointer(m_window.getHandle(), this);
-    glfwSetFramebufferSizeCallback(m_window->getHandle(), framebuffer_callback);
+    glfwSetFramebufferSizeCallback(m_window.getHandle(), framebuffer_callback);
 
     m_adapter->connectApp(this);
 
     m_adapter->init();
 
-    m_window->showWindow(true);
+    m_window.showWindow(true);
 }
 
 void App::run()
 {
-    double ns = 1.0/config->targetFPS;
+    double ns = 1.0/m_config.targetFPS;
     double acc = 0.0;
     Timer timer = Timer();
 
-    while(!window->shouldClose())
+    while(!m_window.shouldClose())
     {
         timer.update();
         acc += timer.getDelta();
         while(acc >= ns)
         {
-            adapter->update();
+            m_adapter->update();
             glfwPollEvents();
             acc-=ns;
         }
 
-        adapter->render();
-        glfwSwapBuffers(window->getHandle());
+        m_adapter->render();
+        glfwSwapBuffers(m_window.getHandle());
     }
 
 
@@ -120,8 +119,8 @@ App::~App()
     debugLog("==App Shutdown==\n");
 
     debugLog("Free AppAdapter\n");
-    delete adapter;
-    adapter = nullptr;
+    delete m_adapter;
+    m_adapter = nullptr;
 
     debugLog("GoodBye o/");
 
