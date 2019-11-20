@@ -22,7 +22,7 @@ class App
         ~App();
         void run();
         AppAdapter* getAdapter(){return m_adapter;}
-        AppConfig& getConfig(){return m_config;}
+        AppConfig getConfig(){return m_config;}
         Window& getWindow(){return m_window;}
         static bool GLFWINIT;
 
