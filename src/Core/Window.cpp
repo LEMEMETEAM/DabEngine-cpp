@@ -1,23 +1,9 @@
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
-#include "Core/App.hpp"
-#include "Core/Window.hpp"
-#include "Core/AppConfig.hpp"
-#include "Core/AppAdapter.hpp"
-#include "Core/Monitor.hpp"
-#include "Core/DisplayMode.hpp"
-#include "Core/Input.hpp"
 
-Window::Window(GLFWwindow* handle, AppConfig* conf)
+Window::Window(AppConfig& conf)
+:m_handle(NULL), m_config(conf)
 {
-    this->windowHandle = handle;
-    this->config = conf;
-    this->input = new Input(this);
-}
-
-Window* Window::createWindow(AppConfig* config)
-{
-
     App::debugLog("==Creating window==\n");
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, 0);
@@ -28,34 +14,25 @@ Window* Window::createWindow(AppConfig* config)
     // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     //add mac
 
-    GLFWwindow* win;
-    if(config->fullscreenMode != NULL)
+    if(m_config.fullscreenMode != NULL)
     {
         App::debugLog("Creating fullscreen window\n");
         glfwWindowHint(GLFW_REFRESH_RATE, config->fullscreenMode->refreshRate);
-        win = glfwCreateWindow(config->fullscreenMode->width, config->fullscreenMode->height, config->title, config->fullscreenMode->monitor.monitor, 0);
+        m_handle = glfwCreateWindow(m_config.fullscreenMode->width, m_config.fullscreenMode->height, m_config.title, m_config.fullscreenMode->monitor.monitor, 0);
     }
     else
     {
         App::debugLog("Creating windowed window\n");
         glfwWindowHint(GLFW_DECORATED, config->decorated ? 1 : 0);
-        win = glfwCreateWindow(config->width, config->height, config->title, 0, 0);
+        m_handle = glfwCreateWindow(m_config.width, m_config.height, m_config.title, 0, 0);
     }
-    if(!win) return NULL;
+    if(!win) (App::debugLog("Window not created"), return);
     App::debugLog("Making context\n");
-    glfwMakeContextCurrent(win);
+    glfwMakeContextCurrent(m_handle);
     if(glewInit()){App::debugLog("GLEW Not Initialized\n"); return NULL;}
-    glfwSwapInterval(config->vSync ? 1 : 0);
-    
-    return new Window(win, config);
-}
+    glfwSwapInterval(config->vSync ? 1 : 0); 
 
-void Window::init(AppAdapter* adapter)
-{
-    glfwSetWindowUserPointer(windowHandle, this);
-    this->adapter = adapter;
     updateFramebufferInfo();
-    glfwSetFramebufferSizeCallback(windowHandle, framebuffer_callback);
 }
 
 void Window::updateFramebufferInfo()
@@ -114,28 +91,12 @@ void setFullscreenMode(DisplayMode& mode)
     //TODO
 }
 
-void Window::onFrameBufferSizeChange(int width, int height)
-{
-    updateFramebufferInfo();
-    adapter->resize(width, height);
-    adapter->render();
-    glfwSwapBuffers(windowHandle);
-}
-
-void Window::framebuffer_callback(GLFWwindow* win, int width, int height)
-{
-    Window* obj = static_cast<Window*>(glfwGetWindowUserPointer(win));
-    obj->onFrameBufferSizeChange(width, height);
-}
-
 void Window::closeWindow(){glfwSetWindowShouldClose(windowHandle, 1);}
 bool Window::shouldClose(){return glfwWindowShouldClose(windowHandle);}
 void Window::showWindow(bool b){if(b) glfwShowWindow(windowHandle); else glfwHideWindow(windowHandle);}
 
 Window::~Window()
 {
-    
-    glfwSetWindowUserPointer(windowHandle, NULL);
     glfwDestroyWindow(windowHandle);
     glfwTerminate();
 }
