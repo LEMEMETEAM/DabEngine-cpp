@@ -2,11 +2,9 @@
 #define APP_H_
 
 #include <cstdarg>
-
-class Timer;
-class Window;
-class AppConfig;
-class AppAdapter;
+#include "Core/AppAdapter.hpp"
+#include "Core/AppConfig.hpp"
+#include "Core/Window.hpp"
 
 #define LOW 1
 #define HIGH 2
@@ -20,17 +18,18 @@ class App
         static void debugLog(const char* text, va_list args);
         static void debugLog(int level, const char* text, va_list args);
     public:
-        App(AppAdapter* adapter, AppConfig* config);
+        App(AppAdapter* adapter, AppConfig& config);
         ~App();
         void run();
-        AppAdapter* getAdapter(){return adapter;}
-        AppConfig* getConfig(){return config;}
+        AppAdapter* getAdapter(){return m_adapter;}
+        AppConfig& getConfig(){return m_config;}
+        Window& getWindow(){return m_window;}
         static bool GLFWINIT;
 
     private:
-        AppAdapter* adapter;
-        AppConfig* config;
-        Window* window;
+        AppAdapter* m_adapter;
+        AppConfig m_config;
+        Window m_window;
 
 };
 #endif
