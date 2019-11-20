@@ -1,11 +1,7 @@
 #include "Core/App.hpp"
-#include "Core/AppAdapter.hpp"
-#include "Core/Window.hpp"
-#include "Core/AppConfig.hpp"
 #include "Utils/Timer.hpp"
 #include "GLFW/glfw3.h"
 #include <iostream>
-#include <cstdarg>
 
 bool App::GLFWINIT = false;
 
@@ -26,22 +22,29 @@ static void initGLFW()
     if(!App::GLFWINIT) App::GLFWINIT = true;
 }
 
-App::App(AppAdapter* a, AppConfig* conf)
+static void framebuffer_callback(GLFWwindow* win, int width, int height)
 {
-    initGLFW();
-    adapter = a;
-    config = conf;
+    App* ptr = static_cast<App*>(glfwGetWindowUserPointer(win));
+    ptr->getWindow().updateFrameBufferInfo();
+    ptr->getAdapter()->resize(width, height);
+    ptr->getAdapter()->render();
+    glfwSwapBuffers(win);
+}
 
-    window = Window::createWindow(config);
-    if(!window){debugLog(HIGH, "Window not created\n");}
+App::App(AppAdapter* a, AppConfig& conf)
+:m_adapter(a), m_config(conf), m_window((initGLFW(), Window(conf)))
+{
+    if(!m_window){debugLog(HIGH, "Window not created\n");}
 
-    window->init(adapter);
+    //create callbacks
+    glfwSetWindowUserPointer(m_window.getHandle(), this);
+    glfwSetFramebufferSizeCallback(m_window->getHandle(), framebuffer_callback);
 
-    a->connectApp(this);
+    m_adapter->connectApp(this);
 
-    a->init();
+    m_adapter->init();
 
-    window->showWindow(true);
+    m_window->showWindow(true);
 }
 
 void App::run()
@@ -118,14 +121,7 @@ App::~App()
 
     debugLog("Free AppAdapter\n");
     delete adapter;
-    adapter = NULL;
-
-    debugLog("Free Config\n");
-    config = NULL;
-
-    debugLog("Free Window\n");
-    delete window;
-    window = NULL;
+    adapter = nullptr;
 
     debugLog("GoodBye o/");
 
