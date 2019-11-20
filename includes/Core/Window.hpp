@@ -1,12 +1,10 @@
 #ifndef WINDOW_H_
 #define WINDOW_H_
 
-class GLFWwindow;
-class AppConfig;
-class AppAdapter;
-class Input;
-struct Monitor;
-struct DisplayMode;
+#include "Core/AppConfig.hpp"
+#include "Core/AppAdapter.hpp"
+#include "Core/Monitor.hpp"
+#include "Core/DisplayMode.hpp"
 
 class Window
 {
