@@ -20,12 +20,14 @@ class VertexBuffer
 		VertexBuffer(int size, std::vector<VertexAttrib> attribs);
 		~VertexBuffer();
 		void put(float f);
+        void clear();
 		void bind();
 		void draw(int type, int first, int count);
 		void unbind();
 	private:
 		GLuint m_vbo, m_vao;
 		float* m_buffer;
+        int m_buffersize;
 		int m_vertcount;
 		int m_totalComponents;
 		std::vector<VertexAttrib> m_attribs;

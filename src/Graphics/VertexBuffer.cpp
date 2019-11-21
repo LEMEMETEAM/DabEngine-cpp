@@ -11,6 +11,7 @@ VertexBuffer::VertexBuffer(int size, std::vector<VertexAttrib> attribs)
     }
 
     m_buffer = new float[m_vertcount * m_totalComponents];
+    m_buffersize = m_vertcount * m_totalComponents;
 
     glGenBuffers(1, &m_vbo)
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
@@ -20,12 +21,37 @@ VertexBuffer::VertexBuffer(int size, std::vector<VertexAttrib> attribs)
     glGenVertexArrays(1, &m_vao);
 }
 
-void put(float f)
+void VertexBuffer::put(float f)
 {
-    if(total < sizeof(m_buffer))
+    if(total < m_buffersize)
     {
-        float* p = m_buffer++;
-        p = f;
+        m_buffer++ = f;
         total++;
+    }
+    else
+    {
+        App::debugLog(HIGH, "Buffer overflow");
+    }
+}
+
+void VertexBuffer::clear()
+{
+    memset(m_buffer, 0, sizeof(float) * m_buffersize);
+}
+
+void VertexBuffer::bind()
+{
+    glBindVertexArray(m_vao);
+
+    glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+
+    int offset = 0;
+
+    int stride = totalComponents * sizeof(float);
+
+    for(int i = 0; i < m_attribs.size(); i++)
+    {
+        VertexAttrib a = attribs[i];
+        
     }
 }
