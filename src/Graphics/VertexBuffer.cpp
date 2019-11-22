@@ -51,7 +51,28 @@ void VertexBuffer::bind()
 
     for(int i = 0; i < m_attribs.size(); i++)
     {
-        VertexAttrib a = attribs[i];
-        
+        VertexAttrib a = m_attribs[i];
+        glVertexAttribPointer(a.location, a.numComponents, GL_FLOAT, false, stride, (void*)offset);
+        glEnableVertexAttribArray(a.location);
+        offset += a.numComponents * sizeof(float);
     }
+}
+
+void VertexBuffer::draw(GLenum type, int first, int count)
+{
+    glBufferSubData(GL_ARRAY_BUFFER, 0, m_buffer);
+    glDrawArrays(type, first, count);
+}
+
+void VertexBuffer::unbind()
+{
+    for(int i = 0; i < m_attribs.size(); i++)
+    {
+        VertexAttrib a = m_attribs[i];
+        glDisableVertexAttribArray(a.location);
+    }
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    glBindVertexArray(0);
 }
