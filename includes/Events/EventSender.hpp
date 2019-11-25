@@ -3,7 +3,7 @@
 
 #include <vector>
 
-class EventListener;
+#include "Events/EventListener.hpp"
 
 template <typename T>
 class EventSender

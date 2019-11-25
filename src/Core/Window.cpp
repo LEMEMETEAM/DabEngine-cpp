@@ -2,6 +2,17 @@
 #include "Core/Window.hpp"
 #include "Core/App.hpp"
 
+void ogl_debug_callback( GLenum source,
+                 GLenum type,
+                 GLuint id,
+                 GLenum severity,
+                 GLsizei length,
+                 const GLchar* message,
+                 const void* userParam )
+{
+    App::debugLog(HIGH, "0x%x 0x%x 0x%x %s\n", source, type, severity, message);
+}
+
 Window::Window(AppConfig& conf)
 :m_handle(NULL), m_config(conf)
 {
@@ -14,6 +25,11 @@ Window::Window(AppConfig& conf)
     // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     //add mac
+
+    if(m_config.debug)
+    {
+        glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+    }
 
     if(m_config.fullscreenMode != NULL)
     {
@@ -33,7 +49,10 @@ Window::Window(AppConfig& conf)
     if(glewInit()){App::debugLog("GLEW Not Initialized\n");}
     glfwSwapInterval(m_config.vSync ? 1 : 0); 
 
-    updateFramebufferInfo();
+    if(m_config.debug)
+    {
+        glDebugMessageCallback(ogl_debug_callback, 0);
+    }
 }
 
 void Window::updateFramebufferInfo()

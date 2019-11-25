@@ -42,6 +42,7 @@ class MouseEventListener : EventListener
 class Mouse : EventSender<MouseEventListener>
 {
     public:
+        ~Mouse(){}
         void onMouseButtonDown(int&, int&);
         void onMouseButtonUp(int&, int&);
         void onMouseMove(double&, double&);

@@ -40,39 +40,80 @@ build cmake_object_order_depends_target_DabEngine: phony || CMakeFiles/DabEngine
 
 build CMakeFiles/DabEngine.dir/Core/App.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Core/App.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Core\App.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Core
 
 build CMakeFiles/DabEngine.dir/Core/Window.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Core/Window.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Core\Window.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Core
 
 build CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Events/EventSender.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Events\EventSender.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Events
 
+build CMakeFiles/DabEngine.dir/Graphics/Batch.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Graphics/Batch.cpp || cmake_object_order_depends_target_DabEngine
+  DEP_FILE = CMakeFiles\DabEngine.dir\Graphics\Batch.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
+  OBJECT_DIR = CMakeFiles\DabEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Graphics
+
+build CMakeFiles/DabEngine.dir/Graphics/VertexBuffer.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Graphics/VertexBuffer.cpp || cmake_object_order_depends_target_DabEngine
+  DEP_FILE = CMakeFiles\DabEngine.dir\Graphics\VertexBuffer.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
+  OBJECT_DIR = CMakeFiles\DabEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Graphics
+
 build CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Input/Keyboard.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Input\Keyboard.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Input
 
 build CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Input/Mouse.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Input\Mouse.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Input
 
 build CMakeFiles/DabEngine.dir/Main.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Main.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Main.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir
+
+build CMakeFiles/DabEngine.dir/Resources/Resource.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Resources/Resource.cpp || cmake_object_order_depends_target_DabEngine
+  DEP_FILE = CMakeFiles\DabEngine.dir\Resources\Resource.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
+  OBJECT_DIR = CMakeFiles\DabEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Resources
+
+build CMakeFiles/DabEngine.dir/Resources/Shader.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Resources/Shader.cpp || cmake_object_order_depends_target_DabEngine
+  DEP_FILE = CMakeFiles\DabEngine.dir\Resources\Shader.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
+  OBJECT_DIR = CMakeFiles\DabEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Resources
+
+build CMakeFiles/DabEngine.dir/Resources/Texture.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Resources/Texture.cpp || cmake_object_order_depends_target_DabEngine
+  DEP_FILE = CMakeFiles\DabEngine.dir\Resources\Texture.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
+  OBJECT_DIR = CMakeFiles\DabEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Resources
 
 
 # =============================================================================
@@ -82,7 +123,8 @@ build CMakeFiles/DabEngine.dir/Main.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B
 #############################################
 # Link the static library libDabEngine.a
 
-build libDabEngine.a: CXX_STATIC_LIBRARY_LINKER__DabEngine CMakeFiles/DabEngine.dir/Core/App.cpp.obj CMakeFiles/DabEngine.dir/Core/Window.cpp.obj CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj CMakeFiles/DabEngine.dir/Main.cpp.obj
+build libDabEngine.a: CXX_STATIC_LIBRARY_LINKER__DabEngine CMakeFiles/DabEngine.dir/Core/App.cpp.obj CMakeFiles/DabEngine.dir/Core/Window.cpp.obj CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj CMakeFiles/DabEngine.dir/Graphics/Batch.cpp.obj CMakeFiles/DabEngine.dir/Graphics/VertexBuffer.cpp.obj CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj CMakeFiles/DabEngine.dir/Main.cpp.obj CMakeFiles/DabEngine.dir/Resources/Resource.cpp.obj CMakeFiles/DabEngine.dir/Resources/Shader.cpp.obj CMakeFiles/DabEngine.dir/Resources/Texture.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -100,6 +142,7 @@ build cmake_object_order_depends_target_EXE: phony || cmake_object_order_depends
 
 build CMakeFiles/EXE.dir/Main.cpp.obj: CXX_COMPILER__EXE C$:/Users/B/Documents/DabEngine-cpp/src/Main.cpp || cmake_object_order_depends_target_EXE
   DEP_FILE = CMakeFiles\EXE.dir\Main.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\EXE.dir
   OBJECT_FILE_DIR = CMakeFiles\EXE.dir
@@ -110,15 +153,16 @@ build CMakeFiles/EXE.dir/Main.cpp.obj: CXX_COMPILER__EXE C$:/Users/B/Documents/D
 
 
 #############################################
-# Link the executable EXE.exe
+# Link the executable C:\Users\B\Documents\DabEngine-cpp\bin\EXE.exe
 
-build EXE.exe: CXX_EXECUTABLE_LINKER__EXE CMakeFiles/EXE.dir/Main.cpp.obj | libDabEngine.a || libDabEngine.a
+build C$:/Users/B/Documents/DabEngine-cpp/bin/EXE.exe: CXX_EXECUTABLE_LINKER__EXE CMakeFiles/EXE.dir/Main.cpp.obj | libDabEngine.a || libDabEngine.a
+  FLAGS = -g
   LINK_LIBRARIES = libDabEngine.a -lglfw3 -lglew32 -lopengl32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/B/Documents/DabEngine-cpp/src/../libs
   OBJECT_DIR = CMakeFiles\EXE.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = EXE.exe
+  TARGET_FILE = C:\Users\B\Documents\DabEngine-cpp\bin\EXE.exe
   TARGET_IMPLIB = libEXE.dll.a
   TARGET_PDB = EXE.exe.dbg
 
@@ -151,7 +195,9 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build DabEngine: phony libDabEngine.a
 
-build EXE: phony EXE.exe
+build EXE: phony C$:/Users/B/Documents/DabEngine-cpp/bin/EXE.exe
+
+build EXE.exe: phony C$:/Users/B/Documents/DabEngine-cpp/bin/EXE.exe
 
 # =============================================================================
 # Folder targets.
@@ -163,7 +209,7 @@ build EXE: phony EXE.exe
 #############################################
 # The main all target.
 
-build all: phony libDabEngine.a EXE.exe
+build all: phony libDabEngine.a C$:/Users/B/Documents/DabEngine-cpp/bin/EXE.exe
 
 
 #############################################

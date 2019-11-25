@@ -31,8 +31,8 @@ class App
     private:
         AppAdapter* m_adapter;
         AppConfig m_config;
-        Mouse m_mouse;
-        Keyboard m_keyboard;
+        Mouse* m_mouse;
+        Keyboard* m_keyboard;
         Window m_window;
 
 };

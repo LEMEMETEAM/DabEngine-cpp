@@ -32,7 +32,7 @@ static void framebuffer_callback(GLFWwindow* win, int width, int height)
 }
 
 App::App(AppAdapter* a, AppConfig& conf)
-:m_adapter(a), m_config(conf), m_window((initGLFW(), Window(conf)))
+:m_adapter(a), m_config(conf), m_window((initGLFW(), conf))
 {
 
     //create callbacks

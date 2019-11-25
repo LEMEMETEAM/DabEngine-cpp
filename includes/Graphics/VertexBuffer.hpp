@@ -17,12 +17,12 @@ struct VertexAttrib
 class VertexBuffer
 {
 	public:
-		VertexBuffer(int size, std::vector<VertexAttrib> attribs);
+		VertexBuffer(int size, const std::vector<VertexAttrib>& attribs);
 		~VertexBuffer();
 		void put(float f);
         void clear();
 		void bind();
-		void draw(int type, int first, int count);
+		void draw(GLenum type, int first, int count);
 		void unbind();
 	private:
 		GLuint m_vbo, m_vao;
@@ -30,6 +30,7 @@ class VertexBuffer
         int m_buffersize;
 		int m_vertcount;
 		int m_totalComponents;
+		int m_bufferpos;
 		std::vector<VertexAttrib> m_attribs;
 		
 };

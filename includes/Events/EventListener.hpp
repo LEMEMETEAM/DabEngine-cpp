@@ -1,7 +1,7 @@
 #ifndef EVENTLISTENER_H_
 #define EVENTLISTENER_H_
 
-class Event;
+#include "Events/Event.hpp"
 
 class EventListener
 {
