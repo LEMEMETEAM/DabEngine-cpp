@@ -2,6 +2,7 @@
 #define BATCH_H_
 
 #include "Graphics/Graphics.hpp"
+#include "Graphics/Batch.hpp"
 #include "Resources/Shader.hpp"
 #include "Resources/Texture.hpp"
 #include "Core/App.hpp"
@@ -17,6 +18,7 @@ class Graphics
 
 
     private:
+        void updateUniforms();
         void flush();
         void checkFlush();
         
@@ -24,6 +26,7 @@ class Graphics
         Shader* m_currentShader;
         Texture* m_currentTextureSlots[16];
         App m_app;
+        float* m_matrix;
 };
 
 #endif

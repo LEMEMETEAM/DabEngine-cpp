@@ -15,9 +15,9 @@ class Batch
         void end();
         void flush();
 
-        int getSize(){return m_size;}
-        int getIdx(){return m_idx;}
-        bool hasBegun(){return m_begun;}
+        inline int getSize(){return m_size;}
+        inline int getIdx(){return m_idx;}
+        inline bool hasBegun(){return m_begun;}
     private:
         VertexBuffer m_buffer;
         int m_size, m_idx;

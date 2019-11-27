@@ -3,6 +3,7 @@
 #include "Core/AppAdapter.hpp"
 #include "Core/AppConfig.hpp"
 #include "Resources/Shader.hpp"
+#include "Utils/Matrix.hpp"
 
 class Test : public AppAdapter
 {
@@ -40,6 +41,28 @@ class Test : public AppAdapter
                             "}\n";
         shader = new Shader(v, f, true);
         shader->load();
+
+        float mat_data[16] = {
+            1.0f, 2.0f, 3.0f, 4.0f,
+            5.0f, 6.0f, 7.0f, 8.0f,
+            1.0f, 2.0f, 3.0f, 4.0f,
+            5.0f, 6.0f, 7.0f, 8.0f,
+        };
+        float mat_data_2[16] = {
+            3.0f, 6.0f, 9.0f, 12.0f,
+            3.0f, 6.0f, 9.0f, 12.0f,
+            3.0f, 6.0f, 9.0f, 12.0f,
+            3.0f, 6.0f, 9.0f, 12.0f
+        };
+        Matrix4f mat(mat_data);
+        Matrix4f mat2(mat_data_2);
+
+        auto mat3 = mat2*mat2;
+        App::debugLog("%f %f %f %f\n %f %f %f %f\n %f %f %f %f\n %f %f %f %f",
+        mat3.get()[0], mat3.get()[1], mat3.get()[2], mat3.get()[3],
+        mat3.get()[4], mat3.get()[5], mat3.get()[6], mat3.get()[7],
+        mat3.get()[8], mat3.get()[9], mat3.get()[10], mat3.get()[11],
+        mat3.get()[12], mat3.get()[13], mat3.get()[14], mat3.get()[15]);
     }
     void render()
     {
