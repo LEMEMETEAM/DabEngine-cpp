@@ -1,6 +1,7 @@
 #include "GL/glew.h"
 #include "Core/Window.hpp"
 #include "Core/App.hpp"
+#include <algorithm>
 
 void ogl_debug_callback( GLenum source,
                  GLenum type,
@@ -11,6 +12,14 @@ void ogl_debug_callback( GLenum source,
                  const void* userParam )
 {
     App::debugLog(HIGH, "0x%x 0x%x 0x%x %s\n", source, type, severity, message);
+}
+
+Monitor toMonitor(GLFWmonitor* m)
+{
+    int x, y;
+    glfwGetMonitorPos(m, &x, &y);
+    const char* name = glfwGetMonitorName(m);
+    return Monitor(m, x, y, name);
 }
 
 Window::Window(AppConfig& conf)
@@ -100,20 +109,102 @@ void Window::setWindowedMode(int width, int height)
     updateFramebufferInfo();
 }
 
-Monitor* getMonitor()
+Monitor Window::getMonitor()
 {
-    //TODO
-    return NULL;
+    std::vector<Monitor> ms = getMonitors();
+    Monitor result = ms[0];
+
+    int windowX, windowY, windowWidth, windowHeight;
+    glfwGetWindowPos(m_handle, &windowX, &windowY);
+    glfwGetWindowSize(m_handle, &windowWidth, &windowHeight);
+
+    int overlap, bestOverlap = 0;
+    for(Monitor m : ms)
+    {
+        DisplayMode mode = getDisplayMode(m);
+
+        overlap = std::max(0,
+                std::min(windowX + windowWidth, m.virtualX + mode.width)
+                        - std::max(windowX, m.virtualX))
+                * std::max(0, 
+                std::min(windowY + windowHeight, m.virtualY + mode.height)
+                - std::max(windowY, m.virtualY));
+        
+        if(bestOverlap < overlap)
+        {
+            bestOverlap = overlap;
+            result = m;
+        }
+    }
+
+    return result;
 }
 
-void setFullscreenMode(DisplayMode& mode)
+void Window::setFullscreenMode(DisplayMode& mode)
 {
-    //TODO
+    if(isFullscreen())
+    {
+        Monitor m = getMonitor();
+        DisplayMode current = getDisplayMode(m);
+        if(current.monitor == mode.monitor && current.refreshRate == mode.refreshRate)
+        {
+            glfwSetWindowSize(m_handle, mode.width, mode.height);
+        }
+        else
+        {
+            glfwSetWindowMonitor(m_handle, mode.monitor.monitor, 0, 0, mode.width, mode.height, mode.refreshRate);
+        }
+    }
+    else
+    {
+        glfwSetWindowMonitor(m_handle, mode.monitor.monitor, 0, 0, mode.width, mode.height, mode.refreshRate);
+    }
+    updateFramebufferInfo();
 }
 
 void Window::closeWindow(){glfwSetWindowShouldClose(m_handle, 1);}
 bool Window::shouldClose(){return glfwWindowShouldClose(m_handle);}
 void Window::showWindow(bool b){if(b) glfwShowWindow(m_handle); else glfwHideWindow(m_handle);}
+
+std::vector<Monitor> Window::getMonitors()
+{
+    App::initGLFW();
+    int count;
+    GLFWmonitor** ms = glfwGetMonitors(&count);
+    std::vector<Monitor> monitors;
+    for(int i = 0; i < count; i++)
+    {
+        monitors.push_back(toMonitor(ms[i]));
+    }
+    return monitors;
+}
+
+Monitor Window::getPrimaryMonitor()
+{
+    App::initGLFW();
+    return toMonitor(glfwGetPrimaryMonitor());
+}
+
+std::vector<DisplayMode> Window::getDisplayModes(Monitor& monitor)
+{
+    App::initGLFW();
+    int count;
+    const GLFWvidmode* vms = glfwGetVideoModes(monitor.monitor, &count);
+    std::vector<DisplayMode> modes;
+    for(int i = 0; i < count; i++)
+    {
+        GLFWvidmode vm = vms[i];
+        modes.emplace_back(monitor, vm.width, vm.height, vm.refreshRate, vm.redBits+vm.greenBits+vm.blueBits);
+    }
+    return modes;
+}
+
+DisplayMode Window::getDisplayMode(Monitor& monitor)
+{
+    App::initGLFW();
+    const GLFWvidmode* vm = glfwGetVideoMode(monitor.monitor);
+    return DisplayMode(monitor, vm->width, vm->height, vm->refreshRate, vm->redBits+vm->greenBits+vm->blueBits);
+}
 
 Window::~Window()
 {

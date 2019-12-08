@@ -6,6 +6,7 @@
 #include "Core/AppAdapter.hpp"
 #include "Core/Monitor.hpp"
 #include "Core/DisplayMode.hpp"
+#include <vector>
 
 class Window
 {
@@ -20,7 +21,7 @@ class Window
         int getWidth(bool opengl);
         int getHeight(bool opengl);
         bool isFullscreen();
-        Monitor* getMonitor();
+        Monitor getMonitor();
 
         void setWindowedMode(int width, int height);
         void setFullscreenMode(DisplayMode& mode);
@@ -28,6 +29,11 @@ class Window
         void closeWindow();
         bool shouldClose();
         void showWindow(bool b);
+
+        static std::vector<Monitor> getMonitors();
+        static Monitor getPrimaryMonitor();
+        static std::vector<DisplayMode> getDisplayModes(Monitor& monitor);
+        static DisplayMode getDisplayMode(Monitor& monitor);
     
     private:
         GLFWwindow* m_handle;

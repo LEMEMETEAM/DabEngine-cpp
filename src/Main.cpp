@@ -4,43 +4,26 @@
 #include "Core/AppConfig.hpp"
 #include "Resources/Shader.hpp"
 #include "Utils/Matrix.hpp"
+#include "Resources/ResourceManager.hpp"
+#include "Cache/LRUCache.hpp"
+#include <string>
+#include <iostream>
+#include <cassert>
 
 class Test : public AppAdapter
 {
     public:
+    Test(){}
     ~Test()
     {
         delete batch;
-        delete shader;
     }
     void update(){}
     void init(){
         App::debugLog("INIT");
         batch = new Batch(100);
-        const char* v = "#version 330\n\n"
-                            "layout (location = 0) in vec3 position;\n"//
-                            "layout (location = 1) in vec4 color;\n"//
-                            "layout (location = 2) in vec2 uvs;\n"//
-                            "layout (location = 3) in vec3 normals;\n\n"//
-                            "out vec3 outPosition;\n"//
-                            "out vec4 outColor;\n"//
-                            "out vec2 outUV;\n"//
-                            "out vec3 outNormals;\n\n"//
-                            "void main(){\n"//
-                            "     gl_Position = vec4(position, 1.0);\n"//
-                            "     outPosition = position;\n"//
-                            "     outColor = color;\n"//
-                            "     outUV = uvs;\n"//
-                            "     outNormals = normals;\n"//
-                            "}\n";
-        const char* f = "#version 330\n\n"
-                            "in vec4 outColor;\n"//
-                            "out vec4 finalColor;\n\n"//
-                            "void main(){\n"//
-                            "     finalColor = outColor;\n"//
-                            "}\n";
-        shader = new Shader(v, f, true);
-        shader->load();
+        
+        shader = &(ResourceManager::defaultShader);
 
         float mat_data[16] = {
             1.0f, 2.0f, 3.0f, 4.0f,
@@ -98,13 +81,25 @@ class Test : public AppAdapter
 
 int main()
 {
-    AppConfig conf = AppConfig();
-    conf.title = "test";
-    conf.width = 800;
-    conf.height = 600;
+    // AppConfig conf = AppConfig();
+    // conf.title = "test";
+    // conf.width = 800;
+    // conf.height = 600;
 
-    App app(new Test(), conf);
-    app.run();
+    // App app(new Test(), conf);
+    // app.run();
+
+    LRUCache<4> cache;
+    cache.add("one", Vector4f(1.0f, 1.0f));
+    cache.add("two", Vector4f(9.0f, 9.0f));
+    cache.add("three", Vector4f(9.0f, 9.0f, 9.0f));
+    cache.add("four", Vector4f(9.0f, 9.0f, 9.0f, 9.0f));
+
+    std::cout << ((Vector4f*)cache.get("two"))->x() << "\n";
+
+    cache.add("lol", Vector4f(100.1f, 1.0f));
+
+    assert((cache.get("one") != NULL));
 
     return 0;
 }

@@ -1,21 +1,24 @@
 #ifndef RESOURCE_H_
 #define RESOURCE_H_
 
+#include <string>
+
 class Resource
 {
     public:
         Resource();
-        Resource(const char* filename);
+        Resource(std::string filename);
         ~Resource();
 
         void load();
+
+        bool m_ready;
     
     protected:
         virtual void create() = 0;
         virtual void destroy() = 0;
         void free();
-        bool m_ready;
-        const char* m_filename;
+        std::string m_filename;
 };
 
 #endif

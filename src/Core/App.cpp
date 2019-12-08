@@ -10,7 +10,7 @@ void error_callback(int error, const char* description)
     App::debugLog(HIGH, "GLFW Error %d: %s\n", error, description);
 }
 
-static void initGLFW()
+void App::initGLFW()
 {
     if(App::GLFWINIT) return;
     if(glfwInit() == GLFW_FALSE)

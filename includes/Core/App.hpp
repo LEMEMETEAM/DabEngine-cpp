@@ -19,6 +19,7 @@ class App
         static void debugLog(int level, const char* text, ...);
         static void debugLog(const char* text, va_list args);
         static void debugLog(int level, const char* text, va_list args);
+        static void initGLFW();
     public:
         App(AppAdapter* adapter, AppConfig& config);
         ~App();

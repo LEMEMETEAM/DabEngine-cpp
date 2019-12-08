@@ -1,10 +1,13 @@
 #include "Graphics/Graphics.hpp"
 #include <vector>
+#include "Utils/dmath.hpp"
+#include "Resources/ResourceManager.hpp"
 
 Graphics::Graphics(App app)
 :m_app(app),
 m_batch(1024),
-m_currentShader(NULL)
+m_currentShader(NULL),
+m_matrix(NULL)
 {}
 
 Graphics::~Graphics()
@@ -14,7 +17,7 @@ Graphics::~Graphics()
 
 void Graphics::updateUniforms()
 {
-    //add matricies
+    m_currentShader->setUniformMatrix4f("m_proj", m_matrix->get());
 
     for(int i = 0; i < 16; i++)
     {
@@ -26,7 +29,14 @@ void Graphics::begin()
 {
     m_batch.begin();
 
-    //ADD REST LATER
+    if(m_matrix == NULL)
+    { 
+        m_matrix = new Matrix4f(dmath::buildMatrixOrtho(0, m_app.getWindow().getWidth(true), m_app.getWindow().getHeight(true), 0));
+    }
+
+    m_currentTextureSlots[0] = &ResourceManager::defaultTexture;
+    m_currentShader = &ResourceManager::defaultShader;
+
     m_currentShader->bind();
 
     updateUniforms();
@@ -62,4 +72,23 @@ void Graphics::checkFlush()
     {
         flush();
     }
+}
+
+void Graphics::setTexture(int unit = 0, Texture* tex)
+{
+    if(tex != m_currentTextureSlots[unit] && m_batch.hasBegun())
+    {
+        flush();
+        if(unit == 0 && tex == NULL)
+        {
+            m_currentTextureSlots[unit] = &ResourceManager::defaultTexture;
+            return;
+        }
+        m_currentTextureSlots[unit] = tex;
+    }
+}
+
+Texture* Graphics::getTexture(int unit = 0)
+{
+    return  m_currentTextureSlots[unit];
 }

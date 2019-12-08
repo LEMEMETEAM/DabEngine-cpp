@@ -1,6 +1,6 @@
 #include "Resources/Resource.hpp"
 
-Resource::Resource(const char* filename)
+Resource::Resource(std::string filename)
 :m_filename(filename), m_ready(false)
 {}
 

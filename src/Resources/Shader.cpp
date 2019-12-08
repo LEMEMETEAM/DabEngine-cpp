@@ -7,7 +7,7 @@
 #include <tuple>
 #include "Core/App.hpp"
 
-Shader::Shader(const char* vertex, const char* fragment, bool source = false)
+Shader::Shader(std::string vertex, std::string fragment, bool source = false)
 :Resource(),
 m_vertexShader(vertex),
 m_fragmentShader(fragment),
@@ -23,7 +23,7 @@ void Shader::create()
     m_ready = compile(m_vertexShader, m_fragmentShader, m_source);
 }
 
-bool Shader::compile(const char* v, const char* f, bool s)
+bool Shader::compile(std::string v, std::string f, bool s)
 {
     m_vert = s ? createShaderFromString(v, GL_VERTEX_SHADER) : createShaderFromFile(v, GL_VERTEX_SHADER);
     m_frag = s ? createShaderFromString(f, GL_FRAGMENT_SHADER) : createShaderFromFile(f, GL_FRAGMENT_SHADER);
@@ -46,7 +46,7 @@ bool Shader::compile(const char* v, const char* f, bool s)
     return true;
 }
 
-GLuint Shader::createShaderFromFile(const char* filename, GLuint type)
+GLuint Shader::createShaderFromFile(std::string filename, GLuint type)
 {
     std::ifstream s;
     s.open(filename);
@@ -82,12 +82,14 @@ GLuint Shader::createShaderFromFile(const char* filename, GLuint type)
     return createShaderFromString(text.c_str(), type);
 }
 
-GLuint Shader::createShaderFromString(const char* source, GLuint type)
+GLuint Shader::createShaderFromString(std::string source, GLuint type)
 {
     GLuint shader = glCreateShader(type);
 
+    const char* s = source.c_str();
+
     App::debugLog("%s\n", source);
-    glShaderSource(shader, 1, &source, NULL);
+    glShaderSource(shader, 1, &s, NULL);
     glCompileShader(shader);
 
     return shader;

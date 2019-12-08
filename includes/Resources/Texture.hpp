@@ -6,7 +6,7 @@
 class Texture : public Resource
 {
     public:
-        Texture(const char* filename, bool mipmap, bool hdr);
+        Texture(std::string filename, bool mipmap, bool hdr);
         Texture(int width, int height, bool mipmap, bool hdr);
         Texture(GLuint& id, int width, int height, bool mipmap, bool hdr);
 

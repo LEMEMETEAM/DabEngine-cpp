@@ -4,7 +4,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "STB/stb_image.h"
 
-Texture::Texture(const char* filename, bool mipmap = false, bool hdr = false)
+Texture::Texture(std::string filename, bool mipmap = false, bool hdr = false)
 :Resource(filename), 
 m_tid(0), 
 m_width(1), 
@@ -89,13 +89,13 @@ void Texture::create()
 
 bool Texture::loadRaw()
 {
-    if(m_filename != NULL || m_filename[0] != '\0')
+    if(m_filename.empty())
     {
         int x, y, channels;
         if(m_hdr)
-            m_pixels = stbi_loadf(m_filename, &x, &y, &channels, 0);
+            m_pixels = stbi_loadf(m_filename.c_str(), &x, &y, &channels, 0);
         else
-            m_pixels = stbi_load(m_filename, &x, &y, &channels, 0);
+            m_pixels = stbi_load(m_filename.c_str(), &x, &y, &channels, 0);
 
         if(m_pixels == NULL) return false;
 
