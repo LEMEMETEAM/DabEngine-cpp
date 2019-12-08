@@ -2,6 +2,10 @@
 #include <vector>
 #include "Utils/dmath.hpp"
 #include "Resources/ResourceManager.hpp"
+#include <cmath>
+#include <algorithm>
+#include <iterator>
+#include <memory>
 
 Graphics::Graphics(App app)
 :m_app(app),
@@ -91,4 +95,126 @@ void Graphics::setTexture(int unit = 0, Texture* tex)
 Texture* Graphics::getTexture(int unit = 0)
 {
     return  m_currentTextureSlots[unit];
+}
+
+void Graphics::setShader(Shader* current)
+{
+    if(m_currentShader != current && m_batch.hasBegun())
+    {
+        flush();
+        m_currentShader = current == NULL ? &ResourceManager::defaultShader : current;
+        m_currentShader->bind();
+        updateUniforms();
+    }
+}
+
+Shader* Graphics::getShader()
+{
+    return m_currentShader;
+}
+
+void Graphics::draw(float* data, const int size, Vector3f pos, Vector3f scale, Vector3f rotation)
+{
+    checkFlush();
+
+    float s[16] = 
+    {
+    scale.x(),   0,  0,  0,
+    0,   scale.y(),  0,  0,
+    0,   0,  scale.z(),  0,
+    0,   0,   0,     1
+    };
+
+    float t[16] =
+    {
+    0,0,0,pos.x(),
+    0,0,0,pos.y(),
+    0,0,0,pos.z(),
+    0,0,0,1
+    };
+
+    float rz[16] = 
+    {
+        cos(rotation.z()),-(sin(rotation.z())), 0,
+        sin(rotation.z()),cos(rotation.z()), 0,
+        0,0,1
+    };
+
+    float ry[16] =
+    {
+        cos(rotation.y()),0,sin(rotation.y()),
+        0,1,0,
+        -(sin(rotation.y())),0,cos(rotation.y())
+    };
+
+    float rx[16] = 
+    {
+        1,0,0,
+        0,cos(rotation.x()),-(sin(rotation.x())),
+        0,sin(rotation.x()),cos(rotation.x())
+    };
+
+    Matrix4f Rx(rx);
+    Matrix4f Ry(ry);
+    Matrix4f Rz(rz);
+
+    Matrix4f rot = Rz*Ry*Rx;
+    Matrix4f scaleMat(s);
+    Matrix4f trans(t);
+
+    Matrix4f final = scaleMat * rot * trans;
+    
+    auto d = std::make_unique<float[]>(size);
+    memcpy(d.get(), data, sizeof(float)*size);
+
+    for(int i = 0; i < size/12; i++)
+    {
+        Vector3f vs(d[i*12+0], d[i*12+1], d[i*12+2]);
+        Vector3f verts = final*vs;
+        d[i*12+0] = verts.x();
+        d[i*12+1] = verts.y();
+        d[i*12+2] = verts.z();
+    }
+
+    m_batch.add(d.get(), size);
+}
+
+void Graphics::drawQuad(Vector3f pos, Vector3f size, Vector3f rotation, color<4>& color = 0xFFFFFF, TextureRegion& region = TextureRegion())
+{
+    Vector3f normals1(0, 0, 1);
+    Vector3f normals2(0, 0, -1);
+    float data[72]{
+        -0.5f, -0.5f, 0,
+        color.c[0], color.c[1], color.c[2], color.c[3],
+        region.m_u, region.m_v,
+        normals1.x(), normals1.y(), normals1.z(),
+
+        -0.5f, 0.5f, 0,
+        color.c[0], color.c[1], color.c[2], color.c[3],
+        region.m_u, region.m_t,
+        normals1.x(), normals1.y(), normals1.z(),
+
+        0.5f, 0.5f, 0,
+        color.c[0], color.c[1], color.c[2], color.c[3],
+        region.m_s, region.m_t,
+        normals1.x(), normals1.y(), normals1.z(),
+
+        0.5f, 0.5f, 0,
+        color.c[0], color.c[1], color.c[2], color.c[3],
+        region.m_s, region.m_t,
+        normals2.x(), normals2.y(), normals2.z(),
+
+        0.5f, -0.5f, 0,
+        color.c[0], color.c[1], color.c[2], color.c[3],
+        region.m_s, region.m_v,
+        normals2.x(), normals2.y(), normals2.z(),
+
+        -0.5f, -0.5f, 0,
+        color.c[0], color.c[1], color.c[2], color.c[3],
+        region.m_u, region.m_v,
+        normals2.x(), normals2.y(), normals2.z()
+    };
+
+    draw(data, 72, pos, scale, rotation
+    );
 }

@@ -9,8 +9,8 @@ class mat
     T m[C * R]{0};
 
     public:
-        static constexpr int m_columns = C;
-        static constexpr int m_rows = R;
+        static constexpr int COLUMNS = C;
+        static constexpr int ROWS = R;
 
         inline void identity()
         {
@@ -86,20 +86,37 @@ class mat
 
         inline mat operator*(const mat& ref) const
         {
-            if(R != ref.m_columns) return *this;
+            if(R != ref.COLUMNS) return *this;
 
-            mat<C, ref.m_rows, T> result;
+            mat<C, ref.ROWS, T> result;
             for(int i = 0; i < C; i++)
             {
-                for(int j = 0; j < ref.m_rows; j++)
+                for(int j = 0; j < ref.ROWS; j++)
                 {
                     for(int k = 0; k < R; k++)
                     {
-                            result.m[i*C+j] += m[i*C+k] * ref.m[k*ref.m_columns+j];
+                        result.m[i*C+j] += m[i*C+k] * ref.m[k*ref.COLUMNS+j];
                     }
                 }
             }
             return result;
+        }
+
+        inline vec operator*(const vec& ref) const
+        {
+            if(R != ref.LENGTH) return *this;
+
+            vec<C, T> result;
+            for(int  i = 0; i < C; i++)
+            {
+                for(int j = 0; j < 1; j++)
+                {
+                    for(int k = 0; k < R; k++)
+                    {
+                        result.m[i*C+j] += m[i*C+k] * ref[k*ref.LENGTH+j];
+                    }
+                }
+            }
         }
 };
 

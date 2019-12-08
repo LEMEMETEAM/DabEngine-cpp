@@ -10,7 +10,7 @@ class vec
 {
 
     T v[L]{0};
-
+    static constexpr int LENGTH = L;
 public:
 
     vec(){}

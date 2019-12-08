@@ -6,6 +6,10 @@
 #include "Resources/Texture.hpp"
 #include "Core/App.hpp"
 #include "Utils/Matrix.hpp"
+#include "Utils/Vector.hpp"
+#include "Utils/TextureRegion.hpp"
+#include "Utils/Timer.hpp"
+#include "Utils/Color.hpp"
 
 class Graphics
 {
@@ -19,10 +23,11 @@ class Graphics
         void setTexture(int, Texture*);
         Texture* getTexture(int);
 
-        void setShader(Shader);
+        void setShader(Shader*);
         Shader* getShader();
 
-        void draw(float*);
+        void draw(float*, const int, Vector3f, Vector3f, Vector3f);
+        void drawQuad(Vector3f, Vector3f, Vector3f, color&, TextureRegion&);
 
     private:
         void updateUniforms();
