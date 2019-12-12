@@ -102,21 +102,9 @@ class mat
             return result;
         }
 
-        inline vec operator*(const vec& ref) const
+        inline vec<3,T> operator*(const vec<3,T>& ref) const
         {
-            if(R != ref.LENGTH) return *this;
-
-            vec<C, T> result;
-            for(int  i = 0; i < C; i++)
-            {
-                for(int j = 0; j < 1; j++)
-                {
-                    for(int k = 0; k < R; k++)
-                    {
-                        result.m[i*C+j] += m[i*C+k] * ref[k*ref.LENGTH+j];
-                    }
-                }
-            }
+            return Vector3f();
         }
 };
 

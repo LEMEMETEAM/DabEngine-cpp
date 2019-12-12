@@ -187,17 +187,17 @@ public:
             n += c * c;
         }
 
-        if(n == 1) return this;
+        if(n == 1) return *this;
 
         n = std::sqrt(n);
-        if(n <= std::numeric_limits<T>::min()) return this;
+        if(n <= std::numeric_limits<T>::min()) return *this;
 
         for(T& c : v)
         {
             c /= n;
         }
 
-        return this;
+        return *this;
     }
 };
 

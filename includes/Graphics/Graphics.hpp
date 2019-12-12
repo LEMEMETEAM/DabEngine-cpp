@@ -26,8 +26,8 @@ class Graphics
         void setShader(Shader*);
         Shader* getShader();
 
-        void draw(float*, const int, Vector3f, Vector3f, Vector3f);
-        void drawQuad(Vector3f, Vector3f, Vector3f, color&, TextureRegion&);
+        void draw(float* data, const int size, Vector3f& pos, Vector3f& scale, Vector3f& rotation);
+        void drawQuad(Vector3f pos, Vector3f size, Vector3f rotation, const color<4> color = 0xFFFFFF, const TextureRegion region = TextureRegion());
 
     private:
         void updateUniforms();

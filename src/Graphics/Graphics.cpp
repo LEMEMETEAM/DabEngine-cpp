@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <iterator>
 #include <memory>
+#include "Utils/Color.hpp"
 
 Graphics::Graphics(App app)
 :m_app(app),
@@ -78,7 +79,7 @@ void Graphics::checkFlush()
     }
 }
 
-void Graphics::setTexture(int unit = 0, Texture* tex)
+void Graphics::setTexture(int unit = 0, Texture* tex = NULL)
 {
     if(tex != m_currentTextureSlots[unit] && m_batch.hasBegun())
     {
@@ -113,7 +114,7 @@ Shader* Graphics::getShader()
     return m_currentShader;
 }
 
-void Graphics::draw(float* data, const int size, Vector3f pos, Vector3f scale, Vector3f rotation)
+void Graphics::draw(float* data, const int size, Vector3f& pos, Vector3f& scale, Vector3f& rotation)
 {
     checkFlush();
 
@@ -179,7 +180,7 @@ void Graphics::draw(float* data, const int size, Vector3f pos, Vector3f scale, V
     m_batch.add(d.get(), size);
 }
 
-void Graphics::drawQuad(Vector3f pos, Vector3f size, Vector3f rotation, color<4>& color = 0xFFFFFF, TextureRegion& region = TextureRegion())
+void Graphics::drawQuad(Vector3f pos, Vector3f size, Vector3f rotation, const color<4> color, const TextureRegion region)
 {
     Vector3f normals1(0, 0, 1);
     Vector3f normals2(0, 0, -1);
@@ -215,6 +216,5 @@ void Graphics::drawQuad(Vector3f pos, Vector3f size, Vector3f rotation, color<4>
         normals2.x(), normals2.y(), normals2.z()
     };
 
-    draw(data, 72, pos, scale, rotation
-    );
+    draw(data, 72, pos, size, rotation);
 }
