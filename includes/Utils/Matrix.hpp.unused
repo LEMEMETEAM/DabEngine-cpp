@@ -102,6 +102,7 @@ class mat
             return result;
         }
 
+<<<<<<< HEAD:includes/Utils/Matrix.hpp.unused
         inline vec<T> operator*(const vec<T>& ref) const
         {
             if(R != ref.LENGTH) return *this;
@@ -118,6 +119,11 @@ class mat
                 }
             }
             return result;
+=======
+        inline vec<3,T> operator*(const vec<3,T>& ref) const
+        {
+            return Vector3f();
+>>>>>>> master:includes/Utils/Matrix.hpp
         }
 };
 
