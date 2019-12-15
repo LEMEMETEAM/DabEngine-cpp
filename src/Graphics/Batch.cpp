@@ -60,3 +60,8 @@ void Batch::flush()
         m_idx = 0;
     }
 }
+
+Batch::~Batch()
+{
+
+}

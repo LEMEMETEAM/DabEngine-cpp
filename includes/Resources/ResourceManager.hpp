@@ -1,3 +1,6 @@
+#ifndef RESOURCEMANAGER_H_
+#define RESOURCEMANAGER_H_
+
 #include "Cache/LRUCache.hpp"
 #include "Resources/Resource.hpp"
 #include "Resources/Texture.hpp"
@@ -33,46 +36,17 @@ class ResourceManager
         static Texture defaultTexture;
         static Shader defaultShader;
 
-        static inline Texture getTexture(std::string name, bool mipmap = true, bool hdr = false)
+        static inline void init()
         {
-            Texture* res = (Texture*)cache.get(name);
-            if(res == NULL)
-            {
-                Texture tex = Texture(name, mipmap, hdr);
-                tex.load();
-                if(!tex.m_ready)
-                {
-                    return defaultTexture;
-                }
-                cache.add(name, tex);
-                return tex;
-            }
-            return *res;
+            defaultTexture.load();
+            defaultShader.load();
         }
         
-        static inline Shader getShader(std::string name_vs, std::string name_fs)
-        {
-            std::string join = name_vs+"|"+name_fs;
-
-            Shader* res = (Shader*)cache.get(join);
-            if(res == NULL)
-            {
-                Shader s = Shader(name_vs, name_fs, false);
-                s.load();
-                if(!s.m_ready)
-                {
-                    return defaultShader;
-                }
-
-                cache.add(join, s);
-                return s;
-            }
-            return *res;
-        }
+        static Texture getTexture(std::string name, bool mipmap = true, bool hdr = false);
+        static Shader getShader(std::string name_vs, std::string name_fs);
 
     private:
         static LRUCache<64> cache;
 };
 
-Texture ResourceManager::defaultTexture = Texture(4, 4, true, false);
-Shader ResourceManager::defaultShader = Shader(VS_SOURCE, FS_SOURCE, true);
+#endif

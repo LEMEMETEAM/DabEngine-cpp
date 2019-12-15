@@ -13,7 +13,7 @@
 class Graphics
 {
     public:
-        Graphics(App app);
+        Graphics(App& app);
         ~Graphics();
 
         void begin();

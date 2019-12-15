@@ -2,12 +2,10 @@
 #include "Core/App.hpp"
 #include "Core/AppAdapter.hpp"
 #include "Core/AppConfig.hpp"
-#include "Resources/Shader.hpp"
-#include "Resources/ResourceManager.hpp"
-#include "Cache/LRUCache.hpp"
 #include <string>
 #include <iostream>
 #include <cassert>
+#include "Resources/ResourceManager.hpp"
 
 class Test : public AppAdapter
 {
@@ -20,6 +18,7 @@ class Test : public AppAdapter
     void update(){}
     void init(){
         App::debugLog("INIT");
+        ResourceManager::init();
         g = new Graphics(*app);
         
     }

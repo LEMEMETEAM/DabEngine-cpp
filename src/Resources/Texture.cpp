@@ -46,7 +46,7 @@ m_created(true)
     }
 }
 
-Texture::Texture(GLuint& id, int width, int height, bool mipmap = false, bool hdr = false)
+Texture::Texture(GLuint id, int width, int height, bool mipmap = false, bool hdr = false)
 :Resource(),
 m_tid(id),
 m_width(width),

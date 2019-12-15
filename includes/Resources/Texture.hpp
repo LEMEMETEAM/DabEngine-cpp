@@ -1,6 +1,7 @@
 #ifndef TEXTURE_H_
 #define TEXTURE_H_
 
+#include "GL/glew.h"
 #include "Resources/Resource.hpp"
 
 class Texture : public Resource
@@ -8,7 +9,7 @@ class Texture : public Resource
     public:
         Texture(std::string filename, bool mipmap, bool hdr);
         Texture(int width, int height, bool mipmap, bool hdr);
-        Texture(GLuint& id, int width, int height, bool mipmap, bool hdr);
+        Texture(GLuint id, int width, int height, bool mipmap, bool hdr);
 
         void bind(int unit);
         void unbind();
