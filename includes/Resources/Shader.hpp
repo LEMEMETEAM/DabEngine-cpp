@@ -73,14 +73,14 @@ class Shader : public Resource
             }
         }
 
-        inline void setUniformMatrix4f(std::string name, float matrix[16])
+        inline void setUniformMatrix4f(std::string name, float* matrix)
         {
             if(!m_ready) return;
             
             GLuint id = glGetUniformLocation(m_program, name.c_str());
             if(id > 0)
             {
-                glUniformMatrix4fv(id, 16, true, matrix);
+                glUniformMatrix4fv(id, 1, true, matrix);
             }
         }
 

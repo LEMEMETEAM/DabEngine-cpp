@@ -3,7 +3,6 @@
 #include "Core/AppAdapter.hpp"
 #include "Core/AppConfig.hpp"
 #include "Resources/Shader.hpp"
-#include "Utils/Matrix.hpp"
 #include "Resources/ResourceManager.hpp"
 #include "Cache/LRUCache.hpp"
 #include <string>
@@ -27,7 +26,7 @@ class Test : public AppAdapter
     void render()
     {
         g->begin();
-        g->drawQuad(Vector3f(), Vector3f(10.0f, 10.0f, 0.0f), Vector3f());
+        g->drawQuad(glm::vec3(), glm::vec3{10,10,0}, glm::vec3());
         g->end();
     }
     void resize(int width, int height){App::debugLog("%d:%d", width, height);}

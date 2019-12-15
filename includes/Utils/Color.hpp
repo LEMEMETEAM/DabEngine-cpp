@@ -6,7 +6,7 @@ class color
 {
     public:
     int c[N]{0};
-    Color(int&& hex)
+    color(const int&& hex)
     {
         if(N>0)
             c[0] = (hex >> 24) & 0xFF;
@@ -18,9 +18,9 @@ class color
             c[3] = hex & 0xFF;
     }
 
-    Color& operator=(int&& hex)
+    color& operator=(const int&& hex)
     {
-        
+
     }
 };
 

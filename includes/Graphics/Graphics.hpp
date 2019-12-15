@@ -5,8 +5,7 @@
 #include "Resources/Shader.hpp"
 #include "Resources/Texture.hpp"
 #include "Core/App.hpp"
-#include "Utils/Matrix.hpp"
-#include "Utils/Vector.hpp"
+#include "glm/glm.hpp"
 #include "Utils/TextureRegion.hpp"
 #include "Utils/Timer.hpp"
 #include "Utils/Color.hpp"
@@ -20,14 +19,14 @@ class Graphics
         void begin();
         void end();
 
-        void setTexture(int, Texture*);
-        Texture* getTexture(int);
+        void setTexture(int unit = 0, Texture* tex = NULL);
+        Texture* getTexture(int unit = 0);
 
-        void setShader(Shader*);
+        void setShader(Shader* current = NULL);
         Shader* getShader();
 
-        void draw(float*, const int, Vector3f, Vector3f, Vector3f);
-        void drawQuad(Vector3f, Vector3f, Vector3f, color&, TextureRegion&);
+        void draw(float* data, const int size, glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation);
+        void drawQuad(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const color<4>& color = 0xFFFFFF, const TextureRegion& region = TextureRegion());
 
     private:
         void updateUniforms();
@@ -38,7 +37,7 @@ class Graphics
         Shader* m_currentShader;
         Texture* m_currentTextureSlots[16];
         App m_app;
-        Matrix4f* m_matrix;
+        glm::mat4* m_matrix;
 };
 
 #endif

@@ -44,6 +44,8 @@ build CMakeFiles/DabEngine.dir/Core/App.cpp.obj: CXX_COMPILER__DabEngine C$:/Use
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Core
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Core/Window.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Core/Window.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Core\Window.cpp.obj.d
@@ -51,6 +53,8 @@ build CMakeFiles/DabEngine.dir/Core/Window.cpp.obj: CXX_COMPILER__DabEngine C$:/
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Core
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Events/EventSender.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Events\EventSender.cpp.obj.d
@@ -58,6 +62,8 @@ build CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj: CXX_COMPILER__DabEngi
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Events
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Graphics/Batch.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Graphics/Batch.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Graphics\Batch.cpp.obj.d
@@ -65,6 +71,17 @@ build CMakeFiles/DabEngine.dir/Graphics/Batch.cpp.obj: CXX_COMPILER__DabEngine C
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Graphics
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
+
+build CMakeFiles/DabEngine.dir/Graphics/Graphics.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Graphics/Graphics.cpp || cmake_object_order_depends_target_DabEngine
+  DEP_FILE = CMakeFiles\DabEngine.dir\Graphics\Graphics.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
+  OBJECT_DIR = CMakeFiles\DabEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Graphics
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Graphics/VertexBuffer.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Graphics/VertexBuffer.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Graphics\VertexBuffer.cpp.obj.d
@@ -72,6 +89,8 @@ build CMakeFiles/DabEngine.dir/Graphics/VertexBuffer.cpp.obj: CXX_COMPILER__DabE
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Graphics
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Input/Keyboard.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Input\Keyboard.cpp.obj.d
@@ -79,6 +98,8 @@ build CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj: CXX_COMPILER__DabEngine C
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Input
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Input/Mouse.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Input\Mouse.cpp.obj.d
@@ -86,6 +107,8 @@ build CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj: CXX_COMPILER__DabEngine C$:/
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Input
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Main.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Main.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Main.cpp.obj.d
@@ -93,6 +116,8 @@ build CMakeFiles/DabEngine.dir/Main.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Resources/Resource.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Resources/Resource.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Resources\Resource.cpp.obj.d
@@ -100,6 +125,8 @@ build CMakeFiles/DabEngine.dir/Resources/Resource.cpp.obj: CXX_COMPILER__DabEngi
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Resources
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Resources/Shader.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Resources/Shader.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Resources\Shader.cpp.obj.d
@@ -107,6 +134,8 @@ build CMakeFiles/DabEngine.dir/Resources/Shader.cpp.obj: CXX_COMPILER__DabEngine
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Resources
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 build CMakeFiles/DabEngine.dir/Resources/Texture.cpp.obj: CXX_COMPILER__DabEngine C$:/Users/B/Documents/DabEngine-cpp/src/Resources/Texture.cpp || cmake_object_order_depends_target_DabEngine
   DEP_FILE = CMakeFiles\DabEngine.dir\Resources\Texture.cpp.obj.d
@@ -114,6 +143,8 @@ build CMakeFiles/DabEngine.dir/Resources/Texture.cpp.obj: CXX_COMPILER__DabEngin
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\DabEngine.dir\Resources
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
+  TARGET_PDB = libDabEngine.pdb
 
 
 # =============================================================================
@@ -123,13 +154,14 @@ build CMakeFiles/DabEngine.dir/Resources/Texture.cpp.obj: CXX_COMPILER__DabEngin
 #############################################
 # Link the static library libDabEngine.a
 
-build libDabEngine.a: CXX_STATIC_LIBRARY_LINKER__DabEngine CMakeFiles/DabEngine.dir/Core/App.cpp.obj CMakeFiles/DabEngine.dir/Core/Window.cpp.obj CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj CMakeFiles/DabEngine.dir/Graphics/Batch.cpp.obj CMakeFiles/DabEngine.dir/Graphics/VertexBuffer.cpp.obj CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj CMakeFiles/DabEngine.dir/Main.cpp.obj CMakeFiles/DabEngine.dir/Resources/Resource.cpp.obj CMakeFiles/DabEngine.dir/Resources/Shader.cpp.obj CMakeFiles/DabEngine.dir/Resources/Texture.cpp.obj
+build libDabEngine.a: CXX_STATIC_LIBRARY_LINKER__DabEngine CMakeFiles/DabEngine.dir/Core/App.cpp.obj CMakeFiles/DabEngine.dir/Core/Window.cpp.obj CMakeFiles/DabEngine.dir/Events/EventSender.cpp.obj CMakeFiles/DabEngine.dir/Graphics/Batch.cpp.obj CMakeFiles/DabEngine.dir/Graphics/Graphics.cpp.obj CMakeFiles/DabEngine.dir/Graphics/VertexBuffer.cpp.obj CMakeFiles/DabEngine.dir/Input/Keyboard.cpp.obj CMakeFiles/DabEngine.dir/Input/Mouse.cpp.obj CMakeFiles/DabEngine.dir/Main.cpp.obj CMakeFiles/DabEngine.dir/Resources/Resource.cpp.obj CMakeFiles/DabEngine.dir/Resources/Shader.cpp.obj CMakeFiles/DabEngine.dir/Resources/Texture.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\DabEngine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
+  TARGET_COMPILE_PDB = CMakeFiles\DabEngine.dir\DabEngine.pdb
   TARGET_FILE = libDabEngine.a
-  TARGET_PDB = DabEngine.a.dbg
+  TARGET_PDB = libDabEngine.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target EXE
@@ -146,6 +178,8 @@ build CMakeFiles/EXE.dir/Main.cpp.obj: CXX_COMPILER__EXE C$:/Users/B/Documents/D
   INCLUDES = -IC:/Users/B/Documents/DabEngine-cpp/src/../includes
   OBJECT_DIR = CMakeFiles\EXE.dir
   OBJECT_FILE_DIR = CMakeFiles\EXE.dir
+  TARGET_COMPILE_PDB = CMakeFiles\EXE.dir\
+  TARGET_PDB = C:\Users\B\Documents\DabEngine-cpp\bin\EXE.pdb
 
 
 # =============================================================================
@@ -162,9 +196,10 @@ build C$:/Users/B/Documents/DabEngine-cpp/bin/EXE.exe: CXX_EXECUTABLE_LINKER__EX
   OBJECT_DIR = CMakeFiles\EXE.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
+  TARGET_COMPILE_PDB = CMakeFiles\EXE.dir\
   TARGET_FILE = C:\Users\B\Documents\DabEngine-cpp\bin\EXE.exe
   TARGET_IMPLIB = libEXE.dll.a
-  TARGET_PDB = EXE.exe.dbg
+  TARGET_PDB = C:\Users\B\Documents\DabEngine-cpp\bin\EXE.pdb
 
 
 #############################################
@@ -220,14 +255,14 @@ default all
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake C$:/Users/B/Documents/DabEngine-cpp/src/CMakeLists.txt CMakeCache.txt CMakeFiles/3.15.2/CMakeCCompiler.cmake CMakeFiles/3.15.2/CMakeCXXCompiler.cmake CMakeFiles/3.15.2/CMakeRCCompiler.cmake CMakeFiles/3.15.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCCompilerABI.c C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCompileFeatures.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeNinjaFindMake.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystem.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeTestCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake C$:/Users/B/Documents/DabEngine-cpp/src/CMakeLists.txt CMakeCache.txt CMakeFiles/3.15.2/CMakeCCompiler.cmake CMakeFiles/3.15.2/CMakeCXXCompiler.cmake CMakeFiles/3.15.2/CMakeRCCompiler.cmake CMakeFiles/3.15.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake C$:/Users/B/Documents/DabEngine-cpp/src/CMakeLists.txt CMakeCache.txt CMakeFiles/3.15.2/CMakeCCompiler.cmake CMakeFiles/3.15.2/CMakeCXXCompiler.cmake CMakeFiles/3.15.2/CMakeRCCompiler.cmake CMakeFiles/3.15.2/CMakeSystem.cmake: phony
+build C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCCompilerABI.c C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCompileFeatures.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeNinjaFindMake.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystem.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeTestCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake C$:/Users/B/Documents/DabEngine-cpp/src/CMakeLists.txt CMakeCache.txt CMakeFiles/3.15.2/CMakeCCompiler.cmake CMakeFiles/3.15.2/CMakeCXXCompiler.cmake CMakeFiles/3.15.2/CMakeRCCompiler.cmake CMakeFiles/3.15.2/CMakeSystem.cmake: phony
 
 
 #############################################

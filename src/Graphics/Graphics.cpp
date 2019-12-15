@@ -1,11 +1,12 @@
 #include "Graphics/Graphics.hpp"
 #include <vector>
-#include "Utils/dmath.hpp"
 #include "Resources/ResourceManager.hpp"
 #include <cmath>
 #include <algorithm>
 #include <iterator>
 #include <memory>
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 Graphics::Graphics(App app)
 :m_app(app),
@@ -21,7 +22,7 @@ Graphics::~Graphics()
 
 void Graphics::updateUniforms()
 {
-    m_currentShader->setUniformMatrix4f("m_proj", m_matrix->get());
+    m_currentShader->setUniformMatrix4f("m_proj", glm::value_ptr(*m_matrix));
 
     for(int i = 0; i < 16; i++)
     {
@@ -35,7 +36,7 @@ void Graphics::begin()
 
     if(m_matrix == NULL)
     { 
-        m_matrix = new Matrix4f(dmath::buildMatrixOrtho(0, m_app.getWindow().getWidth(true), m_app.getWindow().getHeight(true), 0));
+        m_matrix = &glm::ortho((float)0, (float)m_app.getWindow().getWidth(true), (float)m_app.getWindow().getHeight(true), (float)0);
     }
 
     m_currentTextureSlots[0] = &ResourceManager::defaultTexture;
@@ -78,7 +79,7 @@ void Graphics::checkFlush()
     }
 }
 
-void Graphics::setTexture(int unit = 0, Texture* tex)
+void Graphics::setTexture(int unit, Texture* tex)
 {
     if(tex != m_currentTextureSlots[unit] && m_batch.hasBegun())
     {
@@ -92,7 +93,7 @@ void Graphics::setTexture(int unit = 0, Texture* tex)
     }
 }
 
-Texture* Graphics::getTexture(int unit = 0)
+Texture* Graphics::getTexture(int unit)
 {
     return  m_currentTextureSlots[unit];
 }
@@ -113,108 +114,67 @@ Shader* Graphics::getShader()
     return m_currentShader;
 }
 
-void Graphics::draw(float* data, const int size, Vector3f pos, Vector3f scale, Vector3f rotation)
+void Graphics::draw(float* data, const int size, glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation)
 {
     checkFlush();
 
-    float s[16] = 
-    {
-    scale.x(),   0,  0,  0,
-    0,   scale.y(),  0,  0,
-    0,   0,  scale.z(),  0,
-    0,   0,   0,     1
-    };
-
-    float t[16] =
-    {
-    0,0,0,pos.x(),
-    0,0,0,pos.y(),
-    0,0,0,pos.z(),
-    0,0,0,1
-    };
-
-    float rz[16] = 
-    {
-        cos(rotation.z()),-(sin(rotation.z())), 0,
-        sin(rotation.z()),cos(rotation.z()), 0,
-        0,0,1
-    };
-
-    float ry[16] =
-    {
-        cos(rotation.y()),0,sin(rotation.y()),
-        0,1,0,
-        -(sin(rotation.y())),0,cos(rotation.y())
-    };
-
-    float rx[16] = 
-    {
-        1,0,0,
-        0,cos(rotation.x()),-(sin(rotation.x())),
-        0,sin(rotation.x()),cos(rotation.x())
-    };
-
-    Matrix4f Rx(rx);
-    Matrix4f Ry(ry);
-    Matrix4f Rz(rz);
-
-    Matrix4f rot = Rz*Ry*Rx;
-    Matrix4f scaleMat(s);
-    Matrix4f trans(t);
-
-    Matrix4f final = scaleMat * rot * trans;
+    glm::mat4 final(1.0f);
+    glm::scale(final, scale);
+    glm::rotate(final, rotation.z, glm::vec3(0,0,1));
+    glm::rotate(final, rotation.y, glm::vec3(0,1,0));
+    glm::rotate(final, rotation.x, glm::vec3(1,0,0));
+    glm::translate(final, pos);
     
     auto d = std::make_unique<float[]>(size);
     memcpy(d.get(), data, sizeof(float)*size);
 
     for(int i = 0; i < size/12; i++)
     {
-        Vector3f vs(d[i*12+0], d[i*12+1], d[i*12+2]);
-        Vector3f verts = final*vs;
-        d[i*12+0] = verts.x();
-        d[i*12+1] = verts.y();
-        d[i*12+2] = verts.z();
+        glm::vec3 vs(d[i*12+0], d[i*12+1], d[i*12+2]);
+        glm::vec3 verts = final*glm::vec4(vs, 0.0);
+        d[i*12+0] = verts.x;
+        d[i*12+1] = verts.y;
+        d[i*12+2] = verts.z;
     }
 
     m_batch.add(d.get(), size);
 }
 
-void Graphics::drawQuad(Vector3f pos, Vector3f size, Vector3f rotation, color<4>& color = 0xFFFFFF, TextureRegion& region = TextureRegion())
+void Graphics::drawQuad(glm::vec3 pos, glm::vec3 size, glm::vec3 rotation, const color<4>& color, const TextureRegion& region)
 {
-    Vector3f normals1(0, 0, 1);
-    Vector3f normals2(0, 0, -1);
+    glm::vec3 normals1{0, 0, 1};
+    glm::vec3 normals2{0, 0, -1};
     float data[72]{
         -0.5f, -0.5f, 0,
         color.c[0], color.c[1], color.c[2], color.c[3],
         region.m_u, region.m_v,
-        normals1.x(), normals1.y(), normals1.z(),
+        normals1.x, normals1.y, normals1.z,
 
         -0.5f, 0.5f, 0,
         color.c[0], color.c[1], color.c[2], color.c[3],
         region.m_u, region.m_t,
-        normals1.x(), normals1.y(), normals1.z(),
+        normals1.x, normals1.y, normals1.z,
 
         0.5f, 0.5f, 0,
         color.c[0], color.c[1], color.c[2], color.c[3],
         region.m_s, region.m_t,
-        normals1.x(), normals1.y(), normals1.z(),
+        normals1.x, normals1.y, normals1.z,
 
         0.5f, 0.5f, 0,
         color.c[0], color.c[1], color.c[2], color.c[3],
         region.m_s, region.m_t,
-        normals2.x(), normals2.y(), normals2.z(),
+        normals2.x, normals2.y, normals2.z,
 
         0.5f, -0.5f, 0,
         color.c[0], color.c[1], color.c[2], color.c[3],
         region.m_s, region.m_v,
-        normals2.x(), normals2.y(), normals2.z(),
+        normals2.x, normals2.y, normals2.z,
 
         -0.5f, -0.5f, 0,
         color.c[0], color.c[1], color.c[2], color.c[3],
         region.m_u, region.m_v,
-        normals2.x(), normals2.y(), normals2.z()
+        normals2.x, normals2.y, normals2.z
     };
 
-    draw(data, 72, pos, scale, rotation
-    );
+    draw(data, 72, pos, size, rotation);
 }
