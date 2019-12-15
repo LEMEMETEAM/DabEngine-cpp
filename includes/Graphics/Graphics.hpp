@@ -25,8 +25,13 @@ class Graphics
         void setShader(Shader* current = NULL);
         Shader* getShader();
 
+<<<<<<< HEAD
         void draw(float* data, const int size, glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation);
         void drawQuad(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const color<4>& color = 0xFFFFFF, const TextureRegion& region = TextureRegion());
+=======
+        void draw(float* data, const int size, Vector3f& pos, Vector3f& scale, Vector3f& rotation);
+        void drawQuad(Vector3f pos, Vector3f size, Vector3f rotation, const color<4> color = 0xFFFFFF, const TextureRegion region = TextureRegion());
+>>>>>>> master
 
     private:
         void updateUniforms();

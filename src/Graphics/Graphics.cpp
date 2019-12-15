@@ -5,8 +5,12 @@
 #include <algorithm>
 #include <iterator>
 #include <memory>
+<<<<<<< HEAD
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
+=======
+#include "Utils/Color.hpp"
+>>>>>>> master
 
 Graphics::Graphics(App& app)
 :m_app(app),
@@ -81,7 +85,11 @@ void Graphics::checkFlush()
     }
 }
 
+<<<<<<< HEAD
 void Graphics::setTexture(int unit, Texture* tex)
+=======
+void Graphics::setTexture(int unit = 0, Texture* tex = NULL)
+>>>>>>> master
 {
     if(tex != m_currentTextureSlots[unit] && m_batch.hasBegun())
     {
@@ -116,7 +124,11 @@ Shader* Graphics::getShader()
     return m_currentShader;
 }
 
+<<<<<<< HEAD
 void Graphics::draw(float* data, const int size, glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation)
+=======
+void Graphics::draw(float* data, const int size, Vector3f& pos, Vector3f& scale, Vector3f& rotation)
+>>>>>>> master
 {
     checkFlush();
 
@@ -142,7 +154,11 @@ void Graphics::draw(float* data, const int size, glm::vec3 pos, glm::vec3 scale,
     m_batch.add(d.get(), size);
 }
 
+<<<<<<< HEAD
 void Graphics::drawQuad(glm::vec3 pos, glm::vec3 size, glm::vec3 rotation, const color<4>& color, const TextureRegion& region)
+=======
+void Graphics::drawQuad(Vector3f pos, Vector3f size, Vector3f rotation, const color<4> color, const TextureRegion region)
+>>>>>>> master
 {
     glm::vec3 normals1{0, 0, 1};
     glm::vec3 normals2{0, 0, -1};

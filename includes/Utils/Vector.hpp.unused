@@ -195,10 +195,10 @@ public:
             n += c * c;
         }
 
-        if(n == 1) return this;
+        if(n == 1) return *this;
 
         n = std::sqrt(n);
-        if(n <= std::numeric_limits<T>::min()) return this;
+        if(n <= std::numeric_limits<T>::min()) return *this;
 
         for(int i = 0; i < size; i++)
         {
@@ -206,7 +206,7 @@ public:
             c /= n;
         }
 
-        return this;
+        return *this;
     }
 };
 
