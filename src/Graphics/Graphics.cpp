@@ -12,6 +12,7 @@ Graphics::Graphics(App& app)
 :m_app(app),
 m_batch(1024),
 m_currentShader(NULL),
+m_currentTextureSlots{nullptr},
 m_matrix(NULL)
 {}
 
@@ -59,7 +60,7 @@ void Graphics::flush()
     std::vector<Texture*> bound;
     for(int i = 0; i < 16; i++)
     {
-        if(m_currentTextureSlots[i] != NULL)
+        if(m_currentTextureSlots[i] != nullptr)
         {
             m_currentTextureSlots[i]->bind(i);
             bound.push_back(m_currentTextureSlots[i]);
