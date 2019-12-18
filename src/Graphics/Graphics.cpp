@@ -12,6 +12,7 @@ Graphics::Graphics(App& app)
 :m_app(app),
 m_batch(1024),
 m_currentShader(NULL),
+m_currentTextureSlots{nullptr},
 m_matrix(NULL)
 {}
 
