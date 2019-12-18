@@ -19,13 +19,13 @@ class Test : public AppAdapter
     void init(){
         App::debugLog("INIT");
         ResourceManager::init();
-        g = new Graphics(*app);
+        g = new Graphics(app);
         
     }
     void render()
     {
         g->begin();
-        g->drawQuad(glm::vec3(), glm::vec3{10,10,0}, glm::vec3());
+        g->drawQuad(glm::vec3{app->getWindow().getWidth()/2, app->getWindow().getHeight()/2, 0}, glm::vec3{600,600,0}, glm::vec3());
         g->end();
     }
     void resize(int width, int height){App::debugLog("%d:%d", width, height);}
@@ -41,8 +41,16 @@ int main()
     conf.width = 800;
     conf.height = 600;
 
-    App app(new Test(), conf);
-    app.run();
+    try
+    {
+        App app(new Test(), conf);
+        app.run();
+    }
+    catch(...)
+    {
+        auto x = std::current_exception();
+        App::debugLog("%s", x ? x.__cxa_exception_type()->name() : "null");
+    }
 
     return 0;
 }

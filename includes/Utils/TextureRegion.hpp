@@ -7,7 +7,7 @@ class TextureRegion
         float m_scaleX, m_scaleY;
         float m_u, m_v, m_s, m_t;
         int m_tileNomX, m_tileNomY;
-        TextureRegion(int tileNomX = 0, int tileNomY = 0)
+        TextureRegion(int tileNomX = 1, int tileNomY = 1)
         :m_scaleX(1.0f/(float)tileNomX), m_scaleY(1.0f/(float)tileNomY),
         m_u(0), m_v(0), m_s(m_scaleX), m_t(m_scaleY),
         m_tileNomX(tileNomX), m_tileNomY(tileNomY)

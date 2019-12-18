@@ -18,8 +18,8 @@ class Window
         void updateFramebufferInfo();
 
         GLFWwindow* getHandle(){return m_handle;}
-        int getWidth(bool opengl);
-        int getHeight(bool opengl);
+        int getWidth(bool opengl = false);
+        int getHeight(bool opengl = false);
         bool isFullscreen();
         Monitor getMonitor();
 

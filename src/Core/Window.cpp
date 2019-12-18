@@ -79,13 +79,13 @@ void Window::setTitle(const char* title)
     m_config.title = title;
 }
 
-int Window::getWidth(bool opengl = false)
+int Window::getWidth(bool opengl)
 {
     if(opengl) return backBufferWidth;
     else return logicalWidth;
 }
 
-int Window::getHeight(bool opengl = false)
+int Window::getHeight(bool opengl)
 {
     if(opengl) return backBufferHeight;
     else return logicalHeight;

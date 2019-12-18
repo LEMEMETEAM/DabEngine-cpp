@@ -8,7 +8,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
-Graphics::Graphics(App& app)
+Graphics::Graphics(App* app)
 :m_app(app),
 m_batch(1024),
 m_currentShader(NULL),
@@ -18,7 +18,6 @@ m_matrix(NULL)
 
 Graphics::~Graphics()
 {
-    delete m_currentShader;
     delete m_matrix;
 }
 
@@ -38,7 +37,7 @@ void Graphics::begin()
 
     if(!m_matrix)
     { 
-        m_matrix = new glm::mat4(glm::ortho((float)0, (float)m_app.getWindow().getWidth(true), (float)m_app.getWindow().getHeight(true), (float)0));
+        m_matrix = new glm::mat4(glm::ortho((float)0, (float)m_app->getWindow().getWidth(true), (float)m_app->getWindow().getHeight(true), (float)0));
     }
 
     m_currentTextureSlots[0] = &ResourceManager::defaultTexture;
@@ -60,7 +59,7 @@ void Graphics::flush()
     std::vector<Texture*> bound;
     for(int i = 0; i < 16; i++)
     {
-        if(!m_currentTextureSlots[i])
+        if(m_currentTextureSlots[i])
         {
             m_currentTextureSlots[i]->bind(i);
             bound.push_back(m_currentTextureSlots[i]);
@@ -122,11 +121,14 @@ void Graphics::draw(float* data, const int size, glm::vec3 pos, glm::vec3 scale,
     checkFlush();
 
     glm::mat4 final(1.0f);
-    glm::scale(final, scale);
-    glm::rotate(final, rotation.z, glm::vec3(0,0,1));
-    glm::rotate(final, rotation.y, glm::vec3(0,1,0));
-    glm::rotate(final, rotation.x, glm::vec3(1,0,0));
-    glm::translate(final, pos);
+    glm::mat4 sM = glm::scale(final, scale);
+    glm::mat4 zM = glm::rotate(final, rotation.z, glm::vec3(0,0,1));
+    glm::mat4 yM = glm::rotate(final, rotation.y, glm::vec3(0,1,0));
+    glm::mat4 xM = glm::rotate(final, rotation.x, glm::vec3(1,0,0));
+    glm::mat4 tM = glm::translate(final, pos);
+
+    glm::mat4 rM = xM * yM * zM;
+    final = tM * rM * sM;
     
     auto d = std::make_unique<float[]>(size);
     memcpy(d.get(), data, sizeof(float)*size);
@@ -134,7 +136,7 @@ void Graphics::draw(float* data, const int size, glm::vec3 pos, glm::vec3 scale,
     for(int i = 0; i < size/12; i++)
     {
         glm::vec3 vs(d[i*12+0], d[i*12+1], d[i*12+2]);
-        glm::vec3 verts = final*glm::vec4(vs, 0.0);
+        glm::vec3 verts = final*glm::vec4(vs, 1.0);
         d[i*12+0] = verts.x;
         d[i*12+1] = verts.y;
         d[i*12+2] = verts.z;

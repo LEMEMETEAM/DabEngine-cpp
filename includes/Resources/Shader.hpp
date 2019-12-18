@@ -78,9 +78,9 @@ class Shader : public Resource
             if(!m_ready) return;
             
             GLuint id = glGetUniformLocation(m_program, name.c_str());
-            if(id > 0)
+            if(id != -1)
             {
-                glUniformMatrix4fv(id, 1, true, matrix);
+                glUniformMatrix4fv(id, 1, GL_FALSE, matrix);
             }
         }
 

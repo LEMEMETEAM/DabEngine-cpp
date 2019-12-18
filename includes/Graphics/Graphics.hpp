@@ -13,7 +13,7 @@
 class Graphics
 {
     public:
-        Graphics(App& app);
+        Graphics(App* app);
         ~Graphics();
 
         void begin();
@@ -26,7 +26,7 @@ class Graphics
         Shader* getShader();
 
         void draw(float* data, const int size, glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation);
-        void drawQuad(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const color<4>& color = 0xFFFFFF, const TextureRegion& region = TextureRegion());
+        void drawQuad(glm::vec3 pos, glm::vec3 scale, glm::vec3 rotation, const color<4>& color = 0xFFFFFFFF, const TextureRegion& region = TextureRegion());
 
     private:
         void updateUniforms();
@@ -36,7 +36,7 @@ class Graphics
         Batch m_batch;
         Shader* m_currentShader;
         Texture* m_currentTextureSlots[16];
-        App m_app;
+        App* m_app;
         glm::mat4* m_matrix;
 };
 
