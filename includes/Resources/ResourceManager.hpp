@@ -16,8 +16,9 @@
                         "out vec4 outColor;\n"\
                         "out vec2 outUV;\n"\
                         "out vec3 outNormals;\n\n"\
+                        "uniform mat4 m_proj;\n\n"\
                         "void main(){\n"\
-                        "     gl_Position = vec4(position, 1.0);\n"\
+                        "     gl_Position = m_proj * vec4(position, 1.0);\n"\
                         "     outPosition = position;\n"\
                         "     outColor = color;\n"\
                         "     outUV = uvs;\n"\
@@ -26,9 +27,12 @@
 
 #define FS_SOURCE "#version 330\n\n"\
                             "in vec4 outColor;\n"\
+                            "in vec2 outUV;\n"\
                             "out vec4 finalColor;\n\n"\
+                            "uniform sampler2D texture0;\n\n"\
                             "void main(){\n"\
-                            "     finalColor = outColor;\n"\
+                            "     vec4 s = texture(texture0, outUV);\n"\
+                            "     finalColor = s * outColor;\n"\
                             "}\n"
 class ResourceManager
 {

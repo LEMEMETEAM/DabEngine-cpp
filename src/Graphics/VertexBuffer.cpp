@@ -36,6 +36,7 @@ void VertexBuffer::put(float f)
 
 void VertexBuffer::clear()
 {
+    m_bufferpos = 0;
     delete[] m_buffer;
     m_buffer = new float[m_buffersize];
 }

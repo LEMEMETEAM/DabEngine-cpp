@@ -35,7 +35,7 @@ void Graphics::begin()
 {
     m_batch.begin();
 
-    if(m_matrix == NULL)
+    if(!m_matrix)
     { 
         m_matrix = new glm::mat4(glm::ortho((float)0, (float)m_app.getWindow().getWidth(true), (float)m_app.getWindow().getHeight(true), (float)0));
     }
@@ -59,7 +59,7 @@ void Graphics::flush()
     std::vector<Texture*> bound;
     for(int i = 0; i < 16; i++)
     {
-        if(m_currentTextureSlots[i] != NULL)
+        if(!m_currentTextureSlots[i])
         {
             m_currentTextureSlots[i]->bind(i);
             bound.push_back(m_currentTextureSlots[i]);
