@@ -27,6 +27,9 @@ class App
         AppAdapter* getAdapter(){return m_adapter;}
         AppConfig getConfig(){return m_config;}
         Window& getWindow(){return m_window;}
+        Mouse* getMouse(){return m_mouse;}
+        Keyboard* getKeyboard(){return m_keyboard;}
+        
         static bool GLFWINIT;
 
     private:

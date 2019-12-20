@@ -16,6 +16,7 @@ add_library(DabEngine ${SOURCE})
 target_link_libraries(DabEngine glfw3)
 target_link_libraries(DabEngine glew32)
 target_link_libraries(DabEngine opengl32)
+target_link_libraries(DabEngine lua51)
 
 if(BUILD_EXE)
 	# make exe

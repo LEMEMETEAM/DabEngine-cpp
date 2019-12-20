@@ -10,6 +10,7 @@ class Texture : public Resource
         Texture(std::string filename, bool mipmap, bool hdr);
         Texture(int width, int height, bool mipmap, bool hdr);
         Texture(GLuint id, int width, int height, bool mipmap, bool hdr);
+        virtual ~Texture();
 
         void bind(int unit);
         void unbind();
@@ -19,7 +20,6 @@ class Texture : public Resource
 
     protected:
         void create();
-        void destroy();
 
     private:
         bool loadRaw();

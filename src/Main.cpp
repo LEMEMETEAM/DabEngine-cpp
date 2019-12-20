@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cassert>
 #include "Resources/ResourceManager.hpp"
+#include "Script/ScriptManager.hpp"
 
 class Test : public AppAdapter
 {
@@ -21,6 +22,7 @@ class Test : public AppAdapter
         ResourceManager::init();
         g = new Graphics(app);
         
+        ScriptManager::getManager().loadFromFile("test.lua");
     }
     void render()
     {
@@ -41,16 +43,8 @@ int main()
     conf.width = 800;
     conf.height = 600;
 
-    try
-    {
-        App app(new Test(), conf);
-        app.run();
-    }
-    catch(...)
-    {
-        auto x = std::current_exception();
-        App::debugLog("%s", x ? x.__cxa_exception_type()->name() : "null");
-    }
+    App app(new Test(), conf);
+    app.run();
 
     return 0;
 }

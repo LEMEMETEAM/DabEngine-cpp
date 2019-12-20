@@ -107,7 +107,7 @@ bool Texture::loadRaw()
     return true;
 }
 
-void Texture::destroy()
+Texture::~Texture()
 {
     if(m_tid != 0)
     {

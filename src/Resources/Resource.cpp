@@ -10,13 +10,7 @@ Resource::Resource()
 
 Resource::~Resource()
 {
-    free();
     m_ready = false;
-}
-
-void Resource::free()
-{
-    destroy();
 }
 
 void Resource::load()

@@ -6,6 +6,7 @@
 #include "Resources/Texture.hpp"
 #include "Resources/Shader.hpp"
 #include <string>
+#include <initializer_list>
 
 #define VS_SOURCE "#version 330\n\n"\
                         "layout (location = 0) in vec3 position;\n"\
@@ -46,8 +47,8 @@ class ResourceManager
             defaultShader.load();
         }
         
-        static Texture getTexture(std::string name, bool mipmap = true, bool hdr = false);
-        static Shader getShader(std::string name_vs, std::string name_fs);
+        template<typename T, typename... Args, typename std::enable_if<std::is_base_of<Resource, T>::value>::type* = nullptr>
+        static T* get(std::string name, Args&&... a);
 
     private:
         static LRUCache<64> cache;

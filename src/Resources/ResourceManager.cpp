@@ -1,42 +1,38 @@
 #include "Resources/ResourceManager.hpp"
+#include <type_traits>
 
 Texture ResourceManager::defaultTexture = Texture(4, 4, true, false);
 Shader ResourceManager::defaultShader = Shader(VS_SOURCE, FS_SOURCE, true);
 LRUCache<64> ResourceManager::cache = LRUCache<64>();
 
-Texture ResourceManager::getTexture(std::string name, bool mipmap, bool hdr)
+template<typename T, typename... Args, typename std::enable_if<std::is_base_of<Resource, T>::value>::type* = nullptr>
+T* ResourceManager::get(std::string name, Args&&... args)
 {
-    Texture* res = (Texture*)cache.get(name);
-    if(res == NULL)
+    Resource* res = static_cast<Resource*>(cache.get(name));
+    if(!res)
     {
-        Texture tex = Texture(name, mipmap, hdr);
-        tex.load();
-        if(!tex.m_ready)
+        T new_res = T(args...);
+        new_res.load();
+        if(!new_res.ready)
         {
-            return defaultTexture;
+            if(std::is_same<T, Texture>::value)
+            {
+                return defaultTexture;
+            }
+            else if(std::is_same<T, Shader>::value)
+            {
+                return defaultShader;
+            }
         }
-        cache.add(name, tex);
-        return tex;
+        else
+        {
+            cache.add(name, new_res);
+            return &new_res;
+        }
+        
     }
-    return *res;
-}
-
-Shader ResourceManager::getShader(std::string name_vs, std::string name_fs)
-{
-    std::string join = name_vs+"|"+name_fs;
-
-    Shader* res = (Shader*)cache.get(join);
-    if(res == NULL)
+    else
     {
-        Shader s = Shader(name_vs, name_fs, false);
-        s.load();
-        if(!s.m_ready)
-        {
-            return defaultShader;
-        }
-
-        cache.add(join, s);
-        return s;
+        return static_cast<T*>(res);
     }
-    return *res;
 }

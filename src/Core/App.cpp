@@ -31,6 +31,19 @@ static void framebuffer_callback(GLFWwindow* win, int width, int height)
     glfwSwapBuffers(win);
 }
 
+static void key_callback(GLFWwindow* win, int key, int scancode, int action, int mod)
+{
+    App* ptr = static_cast<App*>(glfwGetWindowUserPointer(win));
+    switch(action)
+    {
+        case GLFW_RELEASE:
+            ptr->getKeyboard()->onKeyUp(key, scancode, mod);
+        case GLFW_PRESS:
+        case GLFW_REPEAT:
+            ptr->getKeyboard()->onKeyDown(key, scancode, mod);
+    }
+}
+
 App::App(AppAdapter* a, AppConfig& conf)
 :m_adapter(a), m_config(conf), m_window((initGLFW(), conf))
 {
@@ -38,6 +51,7 @@ App::App(AppAdapter* a, AppConfig& conf)
     //create callbacks
     glfwSetWindowUserPointer(m_window.getHandle(), this);
     glfwSetFramebufferSizeCallback(m_window.getHandle(), framebuffer_callback);
+    glfwSetKeyCallback(m_window.getHandle(), key_callback);
 
     m_adapter->connectApp(this);
 

@@ -88,7 +88,6 @@ GLuint Shader::createShaderFromString(std::string source, GLuint type)
 
     const char* s = source.c_str();
 
-    App::debugLog("%s\n", source);
     glShaderSource(shader, 1, &s, NULL);
     glCompileShader(shader);
 

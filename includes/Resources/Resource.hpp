@@ -8,7 +8,7 @@ class Resource
     public:
         Resource();
         Resource(std::string filename);
-        ~Resource();
+        virtual ~Resource();
 
         void load();
 
@@ -16,8 +16,6 @@ class Resource
     
     protected:
         virtual void create() = 0;
-        virtual void destroy() = 0;
-        void free();
         std::string m_filename;
 };
 

@@ -231,7 +231,7 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 DabEngine_BINARY_DIR:STATIC=C:/Users/B/Documents/DabEngine-cpp/build
 
 //Dependencies for the target
-DabEngine_LIB_DEPENDS:STATIC=general;glfw3;general;glew32;general;opengl32;
+DabEngine_LIB_DEPENDS:STATIC=general;glfw3;general;glew32;general;opengl32;general;lua51;
 
 //Value Computed by CMake
 DabEngine_SOURCE_DIR:STATIC=C:/Users/B/Documents/DabEngine-cpp/src
