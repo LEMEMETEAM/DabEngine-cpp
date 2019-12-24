@@ -3,15 +3,15 @@
 #include <algorithm>
 
 template <typename T>
-void EventSender<T>::addListener(T* l)
+void EventSender<T>::pushListener(const T& l)
 {
     listeners.push_back(l);
 }
 
 template <typename T>
-void EventSender<T>::removeListener(T* l)
+void EventSender<T>::popListener()
 {
-    listeners.erase(std::remove(listeners.begin(), listeners.end(), l), listeners.end());
+    listeners.pop_back();
 }
 
 template <typename T>

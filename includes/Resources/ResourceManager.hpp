@@ -2,7 +2,6 @@
 #define RESOURCEMANAGER_H_
 
 #include "Cache/LRUCache.hpp"
-#include "Resources/Resource.hpp"
 #include "Resources/Texture.hpp"
 #include "Resources/Shader.hpp"
 #include <string>
@@ -35,6 +34,9 @@
                             "     vec4 s = texture(texture0, outUV);\n"\
                             "     finalColor = s * outColor;\n"\
                             "}\n"
+
+class Resource;
+
 class ResourceManager
 {
     public:

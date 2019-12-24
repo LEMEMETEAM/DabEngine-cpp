@@ -8,7 +8,7 @@
 class KeyEvent
 {
     public:
-        KeyEvent(int& key, int& scancode, int action, int& mod);
+        KeyEvent(int key, int scancode, int action, int mod);
         ~KeyEvent(){}
         int getKey(){return key;}
         int getScancode(){return scancode;}
@@ -28,8 +28,9 @@ class KeyEventListener : EventListener
 class Keyboard : EventSender<KeyEventListener>
 {
     public:
-        void onKeyDown(int&, int&, int&);
-        void onKeyUp(int&, int&, int&);
+        ~Keyboard(){}
+        void onKeyDown(int key, int scancode, int mod);
+        void onKeyUp(int key, int scancode, int mod);
     private:
         double lastX, lastY;
 };

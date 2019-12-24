@@ -1,46 +1,39 @@
 #include "Input/Mouse.hpp"
 #include "GLFW/glfw3.h"
 
-MouseMoveEvent::MouseMoveEvent(double& x, double& y, double& dx, double& dy)
-{
-	this->x = x;
-	this->y = y;
-	this->dx = dx;
-	this->dy = dy;
-}
+MouseMoveEvent::MouseMoveEvent(double _x, double _y, double _dx, double _dy)
+:x(_x), y(_y), dx(_dx), dy(_dy)
+{}
 
-MouseEvent::MouseEvent(int& button, int action, int& mod)
-{
-	this->button = button;
-	this->action = action;
-	this->mod = mod;
-}
+MouseEvent::MouseEvent(int _button, int _action, int _mod)
+:button(_button), action(_action), mod(_mod)
+{}
 
-void Mouse::onMouseButtonDown(int& button, int& mod)
+void Mouse::onMouseButtonDown(int button, int mod)
 {
 	MouseEvent e(button, GLFW_PRESS, mod);
-	for(MouseEventListener* l : listeners)
+	for(std::vector<MouseEventListener>::iterator it = listeners.begin(); it < listeners.end(); it++)
 	{
-		l->onMouseButtonDown(e);
+		it->onMouseButtonDown(e);
 	}
 }
 
-void Mouse::onMouseButtonUp(int& button, int& mod)
+void Mouse::onMouseButtonUp(int button, int mod)
 {
 	MouseEvent e(button, GLFW_RELEASE, mod);
-	for(MouseEventListener* l : listeners)
+	for(std::vector<MouseEventListener>::iterator it = listeners.begin(); it < listeners.end(); it++)
 	{
-		l->onMouseButtonUp(e);
+		it->onMouseButtonUp(e);
 	}
 }
 
-void Mouse::onMouseMove(double& x, double& y)
+void Mouse::onMouseMove(double x, double y)
 {
 	double dx = x - lastX, dy = y - lastY;
 
 	MouseMoveEvent e(x, y, dx, dy);
-	for(MouseEventListener* l : listeners)
+	for(std::vector<MouseEventListener>::iterator it = listeners.begin(); it < listeners.end(); it++)
 	{
-		l->onMouseMove(e);
+		it->onMouseMove(e);
 	}
 }

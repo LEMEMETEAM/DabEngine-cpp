@@ -6,7 +6,6 @@ void checkError(lua_State* L)
     if(ret)
     {
         App::debugLog("%s\n", lua_tostring(L, -1));
-        throw;
     }
 }
 

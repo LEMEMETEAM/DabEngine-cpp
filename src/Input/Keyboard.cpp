@@ -1,28 +1,24 @@
 #include "Input/Keyboard.hpp"
 #include "GLFW/glfw3.h"
 
-KeyEvent::KeyEvent(int& key, int& scancode, int action, int& mod)
-{
-	this->key = key;
-	this->scancode = scancode;
-	this->action = action;
-	this->mod = mod;
-}
+KeyEvent::KeyEvent(int _key, int _scancode, int _action, int _mod)
+:key(_key), scancode(_scancode), action(_action), mod(_mod)
+{}
 
-void Keyboard::onKeyDown(int& key, int& scancode, int& mod)
+void Keyboard::onKeyDown(int key, int scancode, int mod)
 {
 	KeyEvent e(key, scancode, GLFW_PRESS, mod);
-	for(KeyEventListener* l : listeners)
+	for(std::vector<KeyEventListener>::iterator it = listeners.begin(); it < listeners.end(); it++)
 	{
-		l->onKeyDown(e);
+		it->onKeyDown(e);
 	}
 }
 
-void Keyboard::onKeyUp(int& key, int& scancode, int& mod)
+void Keyboard::onKeyUp(int key, int scancode, int mod)
 {
 	KeyEvent e(key, scancode, GLFW_RELEASE, mod);
-	for(KeyEventListener* l : listeners)
+	for(std::vector<KeyEventListener>::iterator it = listeners.begin(); it < listeners.end(); it++)
 	{
-		l->onKeyUp(e);
+		it->onKeyUp(e);
 	}
 }

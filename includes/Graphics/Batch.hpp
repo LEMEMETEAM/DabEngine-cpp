@@ -20,8 +20,8 @@ class Batch
         inline bool hasBegun(){return m_begun;}
     private:
         VertexBuffer m_buffer;
-        int m_size, m_idx;
-        bool m_begun;
+        int m_size, m_idx = 0;
+        bool m_begun = false;
 };
 
 #endif

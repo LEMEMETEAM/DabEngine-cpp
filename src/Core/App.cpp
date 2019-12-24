@@ -1,4 +1,9 @@
 #include "Core/App.hpp"
+#include "Core/Window.hpp"
+#include "Core/AppAdapter.hpp"
+#include "Core/AppConfig.hpp"
+#include "Input/Mouse.hpp"
+#include "Input/Keyboard.hpp"
 #include "Utils/Timer.hpp"
 #include "GLFW/glfw3.h"
 #include <iostream>
@@ -38,10 +43,32 @@ static void key_callback(GLFWwindow* win, int key, int scancode, int action, int
     {
         case GLFW_RELEASE:
             ptr->getKeyboard()->onKeyUp(key, scancode, mod);
+            break;
         case GLFW_PRESS:
         case GLFW_REPEAT:
             ptr->getKeyboard()->onKeyDown(key, scancode, mod);
+            break;
     }
+}
+
+static void mouse_button_callback(GLFWwindow* win, int button, int action, int mod)
+{
+    App* ptr = static_cast<App*>(glfwGetWindowUserPointer(win));
+    switch(action)
+    {
+        case GLFW_RELEASE:
+            ptr->getMouse()->onMouseButtonUp(button, mod);
+            break;
+        case GLFW_PRESS:
+            ptr->getMouse()->onMouseButtonDown(button, mod);
+            break;
+    }
+}
+
+static void mouse_move_callback(GLFWwindow* win, double x, double y)
+{
+    App* ptr = static_cast<App*>(glfwGetWindowUserPointer(win));
+    ptr->getMouse()->onMouseMove(x, y);
 }
 
 App::App(AppAdapter* a, AppConfig& conf)
@@ -52,6 +79,8 @@ App::App(AppAdapter* a, AppConfig& conf)
     glfwSetWindowUserPointer(m_window.getHandle(), this);
     glfwSetFramebufferSizeCallback(m_window.getHandle(), framebuffer_callback);
     glfwSetKeyCallback(m_window.getHandle(), key_callback);
+    glfwSetMouseButtonCallback(m_window.getHandle(), mouse_button_callback);
+    glfwSetCursorPosCallback(m_window.getHandle(), mouse_move_callback);
 
     m_adapter->connectApp(this);
 
@@ -136,6 +165,14 @@ App::~App()
     delete m_adapter;
     m_adapter = nullptr;
 
-    debugLog("GoodBye o/");
+    debugLog("Free Mouse\n");
+    delete m_mouse;
+    m_mouse = nullptr;
+
+    debugLog("Free Keyboard\n");
+    delete m_keyboard;
+    m_keyboard = nullptr;
+
+    debugLog("GoodBye o/\n");
 
 }

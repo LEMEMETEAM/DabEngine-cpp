@@ -1,0 +1,7 @@
+organization=lememeteam-github
+projectKey=LEMEMETEAM_DabEngine-cpp
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.3777
+dashboardUrl=https://sonarcloud.io/dashboard?id=LEMEMETEAM_DabEngine-cpp
+ceTaskId=AW84e9Qn_wE00xSRHv1u
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AW84e9Qn_wE00xSRHv1u

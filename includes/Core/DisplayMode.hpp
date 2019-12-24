@@ -1,7 +1,7 @@
 #ifndef DISPLAYMODE_H_
 #define DISPLAYMODE_H_
 
-#include "Core/Monitor.hpp"
+struct Monitor;
 
 struct DisplayMode
 {

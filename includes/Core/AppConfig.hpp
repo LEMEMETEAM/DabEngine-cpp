@@ -1,7 +1,7 @@
 #ifndef APPCONFIG_H_
 #define APPCONFIG_H_
 
-#include "Core/DisplayMode.hpp"
+struct DisplayMode;
 
 struct AppConfig
 {

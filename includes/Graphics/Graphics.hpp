@@ -34,10 +34,10 @@ class Graphics
         void checkFlush();
         
         Batch m_batch;
-        Shader* m_currentShader;
-        Texture* m_currentTextureSlots[16];
+        Shader* m_currentShader = nullptr;
+        Texture* m_currentTextureSlots[16] = {nullptr};
         App* m_app;
-        glm::mat4* m_matrix;
+        glm::mat4* m_matrix = nullptr;
 };
 
 #endif

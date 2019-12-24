@@ -7,12 +7,12 @@ class Resource
 {
     public:
         Resource();
-        Resource(std::string filename);
+        Resource(const std::string& filename);
         virtual ~Resource();
 
         void load();
 
-        bool m_ready;
+        bool m_ready = false;
     
     protected:
         virtual void create() = 0;

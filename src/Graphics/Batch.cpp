@@ -6,9 +6,7 @@ Batch::Batch(int size)
     VertexAttrib(1, "color", 4),
     VertexAttrib(2, "texCoords", 2),
     VertexAttrib(3, "normals", 3)}), 
-m_size(size),
-m_idx(0),
-m_begun(false)
+m_size(size)
 {}
 
 void Batch::begin()

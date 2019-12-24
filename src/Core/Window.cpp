@@ -1,5 +1,9 @@
 #include "GL/glew.h"
 #include "Core/Window.hpp"
+#include "Core/AppConfig.hpp"
+#include "Core/AppAdapter.hpp"
+#include "Core/Monitor.hpp"
+#include "Core/DisplayMode.hpp"
 #include "Core/App.hpp"
 #include <algorithm>
 

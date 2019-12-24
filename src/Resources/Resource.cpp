@@ -1,11 +1,11 @@
 #include "Resources/Resource.hpp"
 
-Resource::Resource(std::string filename)
-:m_filename(filename), m_ready(false)
+Resource::Resource(const std::string& filename)
+:m_filename(filename)
 {}
 
 Resource::Resource()
-:m_filename(""), m_ready(false)
+:m_filename("")
 {}
 
 Resource::~Resource()

@@ -9,7 +9,7 @@
 class MouseMoveEvent : Event
 {
     public:
-        MouseMoveEvent(double&, double&, double&, double&);
+        MouseMoveEvent(double x, double y, double dx, double dy);
         ~MouseMoveEvent(){}
         double getX(){return x;}
         double getY(){return y;}
@@ -22,7 +22,7 @@ class MouseMoveEvent : Event
 class MouseEvent : Event
 {
     public:
-        MouseEvent(int&, int, int&);
+        MouseEvent(int button, int action, int mod);
         ~MouseEvent(){}
         int getButton(){return button;}
         int getAction(){return action;}
@@ -43,9 +43,9 @@ class Mouse : EventSender<MouseEventListener>
 {
     public:
         ~Mouse(){}
-        void onMouseButtonDown(int&, int&);
-        void onMouseButtonUp(int&, int&);
-        void onMouseMove(double&, double&);
+        void onMouseButtonDown(int button, int mods);
+        void onMouseButtonUp(int button, int mods);
+        void onMouseMove(double x, double y);
     private:
         double lastX, lastY;
 };

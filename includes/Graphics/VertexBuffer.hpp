@@ -29,8 +29,8 @@ class VertexBuffer
 		float* m_buffer;
         int m_buffersize;
 		int m_vertcount;
-		int m_totalComponents;
-		int m_bufferpos;
+		int m_totalComponents = 0;
+		int m_bufferpos = 0;
 		std::vector<VertexAttrib> m_attribs;
 		
 };

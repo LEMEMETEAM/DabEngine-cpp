@@ -4,7 +4,7 @@
 static int total = 0;
 
 VertexBuffer::VertexBuffer(int size, const std::vector<VertexAttrib>& attribs)
-:m_vertcount(size), m_attribs(attribs), m_totalComponents(0), m_bufferpos(0)
+:m_vertcount(size), m_attribs(attribs)
 {
     for(VertexAttrib a : m_attribs)
     {

@@ -27,7 +27,7 @@ T* ResourceManager::get(std::string name, Args&&... args)
         else
         {
             cache.add(name, new_res);
-            return &new_res;
+            return static_cast<Resource*>(cache.get(name));
         }
         
     }
